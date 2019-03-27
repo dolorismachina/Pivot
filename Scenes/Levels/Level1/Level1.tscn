@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scenes/Levels/Level.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Levels/Level1/Level1.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/Blocks/Block/Block.tscn" type="PackedScene" id=3]
+
+[node name="Level" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="Start" parent="Pivot/Content" index="0"]
+position = Vector2( 311.948, 275.396 )
+
+[node name="End" parent="Pivot/Content" index="1"]
+position = Vector2( 336.764, 810.856 )
+
+[node name="Block1" parent="Pivot/Content/Blocks" index="0" instance=ExtResource( 3 )]
+position = Vector2( 153.84, 832.223 )
+next_block_path = NodePath("../../../../../Level/Pivot/Content/Blocks/Block2")
+is_visible = true
+is_enabled = true
+
+[node name="Block2" parent="Pivot/Content/Blocks" index="1" instance=ExtResource( 3 )]
+position = Vector2( 327.184, 912.112 )
+previous_block_path = NodePath("../../../../../Level/Pivot/Content/Blocks/Block1")
+next_block_path = NodePath("../../../../../Level/Pivot/Content/Blocks/Block3")
+
+[node name="Block3" parent="Pivot/Content/Blocks" index="2" instance=ExtResource( 3 )]
+position = Vector2( 527.661, 845.789 )
+previous_block_path = NodePath("../../../../../Level/Pivot/Content/Blocks/Block2")
+

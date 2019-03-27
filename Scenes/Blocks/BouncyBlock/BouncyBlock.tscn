@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scenes/Blocks/Block/Block.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Blocks/BouncyBlock/BouncyBlock.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/Blocks/BouncyBlock/BouncyBlock.png" type="Texture" id=3]
+
+
+
+
+[node name="BouncyBlock" index="0" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+bounce_limit = 800
+
+[node name="Sprite" parent="." index="1"]
+texture = ExtResource( 3 )
+
+[node name="Light2D" parent="." index="2"]
+energy = 0.94354
+

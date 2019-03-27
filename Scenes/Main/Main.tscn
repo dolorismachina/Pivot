@@ -1,0 +1,63 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Scenes/Main/Main.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Camera2D.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/HUD/HUD.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/Background.png" type="Texture" id=5]
+[ext_resource path="res://Scenes/BlockConnector/BlockConnector.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Environment.tres" type="Environment" id=7]
+[ext_resource path="res://Scenes/Levels/Level1/Level1.tscn" type="PackedScene" id=8]
+
+
+[node name="Main" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 100, 250 )
+z_index = 100
+horizontal_damping = 0.98
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+current = true
+zoom = Vector2( 0.55, 0.55 )
+limit_left = 0
+limit_top = 0
+limit_smoothed = true
+smoothing_enabled = true
+smoothing_speed = 15.0
+editor_draw_screen = false
+script = ExtResource( 3 )
+zoom_mobile = Vector2( 0.4, 0.4 )
+
+[node name="HUD" parent="." instance=ExtResource( 4 )]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+editor/display_folded = true
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 720, 1280 )
+
+[node name="Background" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+visible = false
+self_modulate = Color( 0.294118, 0.439216, 0.160784, 1 )
+texture = ExtResource( 5 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 1440, 2560 )
+
+[node name="BlockConnector" parent="." instance=ExtResource( 6 )]
+position = Vector2( 100, 400 )
+
+[node name="ScoreUpdateTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource( 7 )
+
+[node name="Level" parent="." instance=ExtResource( 8 )]
+
+[connection signal="reached_end" from="Player" to="." method="_on_Player_reached_end"]
+[connection signal="reset" from="HUD" to="." method="_on_HUD_reset"]
+[connection signal="timeout" from="ScoreUpdateTimer" to="." method="_on_ScoreUpdateTimer_timeout"]
