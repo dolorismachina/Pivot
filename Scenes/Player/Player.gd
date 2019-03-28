@@ -15,6 +15,7 @@ var next_block : Block
 var last_block : Block
 
 
+var acc = Vector2(5, 0)
 func _process(delta : float):
 	velocity += gravity * delta
 	velocity.y = clamp(velocity.y, -bounce_limit, bounce_limit)
@@ -29,7 +30,16 @@ func _process(delta : float):
 		$Audio.play()
 		#$AnimationPlayer.play("bounce")
 		velocity = velocity.normalized().bounce(collision.normal) * bounce_limit
+
+func _unhandled_input(event):
 		
+	if event.is_action_pressed("ui_left"):
+		velocity += Vector2(-100, 0)
+				
+	if event.is_action_pressed("ui_right"):		
+		velocity += Vector2(100, 0)
+		
+				
 
 func collide(collision : KinematicCollision2D) -> void:
 	var block : Block = collision.collider as Block
