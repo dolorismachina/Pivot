@@ -14,7 +14,6 @@ var previous_block : Block
 
 export (bool) var is_visible = false
 export (bool) var is_enabled = false
-export (bool) var is_first = false
 
 
 func get_next():
@@ -51,7 +50,7 @@ func glow():
 	Tween.TRANS_SINE, Tween.EASE_IN_OUT)
 	$GlowTween.start()  
 
-signal contacted
+
 func contact():
 	glow()
 	$ColliderTimer.start()
