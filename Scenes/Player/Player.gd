@@ -18,11 +18,7 @@ var last_block : Block
 
 
 func _process(delta : float):
-	velocity += gravity * delta
-	velocity.y = clamp(velocity.y, -bounce_limit, bounce_limit)
-	velocity.x *= horizontal_damping
-	
-	var collision : KinematicCollision2D = move_and_collide(velocity * delta)
+	var collision : KinematicCollision2D = move(delta)
 	
 	if collision:
 		collide(collision)
@@ -32,6 +28,14 @@ func _process(delta : float):
 		bounce(collision.normal)
 	
 
+func move(delta) -> KinematicCollision2D:
+	velocity += gravity * delta
+	velocity.y = clamp(velocity.y, -bounce_limit, bounce_limit)
+	velocity.x *= horizontal_damping
+	
+	return move_and_collide(velocity * delta)
+	
+	
 func collide(collision : KinematicCollision2D) -> void:
 	var block : Block = collision.collider as Block
 	
