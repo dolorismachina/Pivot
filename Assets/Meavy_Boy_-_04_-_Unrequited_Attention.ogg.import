@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Meavy_Boy_-_04_-_Unrequited_Attention.ogg-aac6457e086f2b58c7ad1a8ee3ea53a6.oggstr"
+
+[deps]
+
+source_file="res://Assets/Meavy_Boy_-_04_-_Unrequited_Attention.ogg"
+dest_files=[ "res://.import/Meavy_Boy_-_04_-_Unrequited_Attention.ogg-aac6457e086f2b58c7ad1a8ee3ea53a6.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

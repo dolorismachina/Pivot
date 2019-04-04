@@ -1,12 +1,20 @@
 extends Node2D
+class_name Level
+
+
+signal rotated(direction, angle) # -1 for left, +1 for right
 
 
 var previous_position : Vector2 = Vector2()
 var distance_moved : Vector2 = Vector2()
 
 
+func _process(delta):
+	$MouseController.update_position($Pivot.get_global_transform_with_canvas().origin)
+
+
 func follow_player(player):
-	$Pivot.position += (player.position + Vector2(0, -100) - $Pivot.position) * 0.4
+	$Pivot.position = player.position - position + Vector2(0, -100)
 	
 	distance_moved = $Pivot.position - previous_position
 	previous_position = $Pivot.position
@@ -26,16 +34,23 @@ func reset():
 
 func reset_blocks():
 	var blocks = $Pivot/Content/Blocks.get_children()
-	print(blocks)
 	
 	for b in blocks:
+		if not b is Block:
+			return
+			
 		var block = (b as Block)
-		block.disable()
+		if block.is_first:
+			block.enable()
+			block.show()
+		else:
+			block.disable()
 		
-	blocks[0].enable()
-	blocks[0].show()
+func start():
+	#reset_blocks()
+	pass
 	
-
+	
 func get_start_position() -> Vector2:
 	return $Pivot/Content/Start.position
 	

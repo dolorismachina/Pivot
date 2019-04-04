@@ -14,14 +14,15 @@ var previous_block : Block
 
 export (bool) var is_visible = false
 export (bool) var is_enabled = false
+export (bool) var is_first = false
+
 
 func get_next():
 	return get_node(next_block_path)
 
 func _ready():
-	randomize()
-	var random_number = floor(rand_range(0, colors.size() - 1))
-	$Sprite.modulate = colors[random_number]
+	set_random_color()
+	
 	if not is_visible:
 		$Sprite.modulate.a = 0
 	
@@ -29,17 +30,18 @@ func _ready():
 		previous_block = get_node(previous_block_path)
 	if next_block_path:
 		next_block = get_node(next_block_path)
-		
-	print(next_block)
-	
 	
 	if is_enabled:
-		print('enable')
 		enable()
 	else:
-		print('disable')
 		disable()
 
+
+func set_random_color():
+	randomize()
+	var random_number = floor(rand_range(0, colors.size() - 1))
+	$Sprite.modulate = colors[random_number]
+	
 func glow():
 	var previous_color = $Sprite.modulate
 	$Sprite.modulate += $Sprite.modulate / 2
@@ -49,9 +51,11 @@ func glow():
 	Tween.TRANS_SINE, Tween.EASE_IN_OUT)
 	$GlowTween.start()  
 
-
+signal contacted
 func contact():
 	glow()
+	$ColliderTimer.start()
+	$CollisionShape2D.disabled = true
 	
 	if previous_block:
 		previous_block.fade_out()
@@ -93,12 +97,17 @@ func show():
 
 func enable():
 	$CollisionShape2D.disabled = false
+	is_enabled = true
 
 func disable():
-	print('Fujara')
 	disable_collision()
 	$Sprite.modulate.a = 0
+	is_enabled = false
 
 func disable_collision():
 	$CollisionShape2D.disabled = true
 	
+
+func _on_ColliderTimer_timeout():
+	if is_enabled:
+		$CollisionShape2D.disabled = false

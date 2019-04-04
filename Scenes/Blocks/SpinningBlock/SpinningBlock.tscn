@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scenes/Blocks/Block/Block.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Blocks/SpinningBlock/SpinningBlock.gd" type="Script" id=2]
+
+[node name="SpinningBlock" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+is_visible = true
+is_enabled = true
+
+[node name="Light2D" parent="." index="2"]
+energy = 0.999394
+

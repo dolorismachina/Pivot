@@ -5,9 +5,9 @@ export (int) var move_distance = 50
 
 func _input(event):
 	if event.is_action_pressed('ui_left'):
-		move(1)
-	if event.is_action_pressed('ui_right'):
 		move(-1)
+	if event.is_action_pressed('ui_right'):
+		move(1)
 		
 func move(direction : float):
 	var blocks = get_node(blocks_path)

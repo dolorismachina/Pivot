@@ -14,15 +14,25 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scenes/Blocks/Block/Block.gd"
 }, {
-"base": "",
+"base": "StaticBody2D",
 "class": "BouncyBlock",
 "language": "GDScript",
 "path": "res://Scenes/Blocks/BouncyBlock/BouncyBlock.gd"
 }, {
-"base": "",
+"base": "Area2D",
+"class": "Collectable",
+"language": "GDScript",
+"path": "res://Scenes/Collectables/Collectable.gd"
+}, {
+"base": "StaticBody2D",
 "class": "FallingBlock",
 "language": "GDScript",
 "path": "res://FallingBlock.gd"
+}, {
+"base": "Node2D",
+"class": "Level",
+"language": "GDScript",
+"path": "res://Scenes/Levels/Level.gd"
 }, {
 "base": "Node2D",
 "class": "LevelController",
@@ -38,14 +48,22 @@ _global_script_classes=[ {
 "class": "Player",
 "language": "GDScript",
 "path": "res://Scenes/Player/Player.gd"
+}, {
+"base": "StaticBody2D",
+"class": "SpinningBlock",
+"language": "GDScript",
+"path": "res://Scenes/Blocks/SpinningBlock/SpinningBlock.gd"
 } ]
 _global_script_class_icons={
 "Block": "",
 "BouncyBlock": "",
+"Collectable": "",
 "FallingBlock": "",
+"Level": "",
 "LevelController": "",
 "Pivot": "",
-"Player": ""
+"Player": "",
+"SpinningBlock": ""
 }
 
 [application]
@@ -59,7 +77,11 @@ config/icon="res://icon.png"
 window/size/width=720
 window/size/height=1280
 window/size/resizable=false
+window/size/test_width=720
+window/size/test_height=1280
 window/handheld/orientation="portrait"
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
 
 [input]
 
@@ -76,4 +98,5 @@ space={
 
 [rendering]
 
+environment/default_clear_color=Color( 0.235294, 0.235294, 0.235294, 1 )
 environment/default_environment="res://default_env.tres"

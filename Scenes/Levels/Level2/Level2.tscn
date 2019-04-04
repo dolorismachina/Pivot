@@ -1,36 +1,35 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Scenes/Levels/Level.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Scenes/Levels/Level2/Level2.gd" type="Script" id=2]
-[ext_resource path="res://Scenes/Blocks/Block/Block.tscn" type="PackedScene" id=3]
-
+[ext_resource path="res://Scenes/Blocks/BouncyBlock/BouncyBlock.tscn" type="PackedScene" id=2]
 
 [node name="Level" instance=ExtResource( 1 )]
-script = ExtResource( 2 )
 
 [node name="Start" parent="Pivot/Content" index="0"]
-position = Vector2( 555.033, 59.8565 )
+position = Vector2( 100, 550 )
 
 [node name="End" parent="Pivot/Content" index="1"]
-position = Vector2( 187.578, 296.109 )
+position = Vector2( 1100, 100 )
 
-[node name="Blocks" parent="Pivot/Content" index="2"]
-position = Vector2( 359.139, 195.894 )
-
-[node name="Block" parent="Pivot/Content/Blocks" index="0" instance=ExtResource( 3 )]
-position = Vector2( 193.019, 53.9624 )
-colors = PoolColorArray( 0.741176, 0.439216, 1, 1, 0.623529, 0.643137, 1, 1, 0.882353, 1, 0.462745, 1, 1, 0.509804, 0.890196, 1, 0.552941, 0.858824, 0.203922, 1, 0.411765, 0.811765, 0.937255, 1, 0.737255, 0.568627, 1, 1, 1, 0.556863, 0.396078, 1 )
-next_block_path = NodePath("../Block2")
+[node name="BouncyBlock" parent="Pivot/Content/Blocks" index="0" instance=ExtResource( 2 )]
+position = Vector2( 100, 650 )
 is_visible = true
+is_enabled = true
 
-[node name="Block2" parent="Pivot/Content/Blocks" index="1" instance=ExtResource( 3 )]
-position = Vector2( -4.23541, 93.4133 )
-previous_block_path = NodePath("../Block")
-next_block_path = NodePath("../Block3")
+[node name="BouncyBlock2" parent="Pivot/Content/Blocks" index="1" instance=ExtResource( 2 )]
+position = Vector2( 400, 700 )
+rotation = 0.261799
 is_visible = true
+is_enabled = true
 
-[node name="Block3" parent="Pivot/Content/Blocks" index="2" instance=ExtResource( 3 )]
-position = Vector2( -172.922, 226.73 )
-previous_block_path = NodePath("../Block2")
+[node name="BouncyBlock3" parent="Pivot/Content/Blocks" index="2" instance=ExtResource( 2 )]
+position = Vector2( 800, 700 )
+rotation = -0.261799
 is_visible = true
+is_enabled = true
+
+[node name="BouncyBlock4" parent="Pivot/Content/Blocks" index="3" instance=ExtResource( 2 )]
+position = Vector2( 900, 450 )
+is_visible = true
+is_enabled = true
 

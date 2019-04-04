@@ -1,45 +1,77 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scenes/Player/Player.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Ball.png" type="Texture" id=2]
-[ext_resource path="res://Scenes/Player/Player.tres" type="Animation" id=3]
-[ext_resource path="res://Audio.gd" type="Script" id=4]
+[ext_resource path="res://Scenes/Player/Trail.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/Player/Ball.png" type="Texture" id=3]
+[ext_resource path="res://Scenes/Player/Player.tres" type="Animation" id=4]
+[ext_resource path="res://Audio.gd" type="Script" id=5]
 
+[sub_resource type="Gradient" id=1]
+colors = PoolColorArray( 1, 1, 1, 1, 0, 0, 0, 0 )
 
-[sub_resource type="CircleShape2D" id=1]
-radius = 63.4517
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
 
-[sub_resource type="CircleShape2D" id=2]
-radius = 64.3987
+[sub_resource type="Curve" id=3]
+_data = [ Vector2( 0, 0.893547 ), 0.0, -2.92608, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=4]
+curve = SubResource( 3 )
+
+[sub_resource type="ParticlesMaterial" id=5]
+trail_divisor = 3
+flag_disable_z = true
+gravity = Vector3( 0, 0, 0 )
+angular_velocity = 5.97303
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale_curve = SubResource( 4 )
+color_ramp = SubResource( 2 )
+
+[sub_resource type="CircleShape2D" id=6]
+radius = 65.8939
+
+[sub_resource type="CircleShape2D" id=7]
+radius = 64.7698
 
 [node name="Player" type="KinematicBody2D"]
 scale = Vector2( 0.25, 0.25 )
 script = ExtResource( 1 )
+horizontal_damping = 0.975
 
-[node name="Sprite" type="Sprite" parent="."]
-self_modulate = Color( 0.211765, 0.94902, 0.886275, 1 )
-position = Vector2( 0, -64.1235 )
+[node name="Particles2D" type="Particles2D" parent="."]
+position = Vector2( 0.69928, -65.7343 )
+amount = 10
+lifetime = 0.5
+local_coords = false
+process_material = SubResource( 5 )
 texture = ExtResource( 2 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
+[node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0, -64.1235 )
-shape = SubResource( 1 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 3 )
+offset = Vector2( -0.1, -0.39 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -64.1235 )
+shape = SubResource( 6 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 playback_speed = 0.25
-anims/bounce = ExtResource( 3 )
+anims/bounce = ExtResource( 4 )
 
 [node name="Audio" type="Node" parent="."]
-script = ExtResource( 4 )
+script = ExtResource( 5 )
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2( 0, -64 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource( 2 )
+shape = SubResource( 7 )
 
 [node name="Tween" type="Tween" parent="."]
 
+[connection signal="obstacle_touched" from="." to="." method="_on_Player_obstacle_touched"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
 [connection signal="tween_completed" from="Tween" to="." method="_on_Tween_tween_completed"]

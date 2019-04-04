@@ -4,19 +4,16 @@
 [ext_resource path="res://FallingBlock.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/Blocks/FallingBlock/FallingBlock.png" type="Texture" id=3]
 
-
-
 [node name="FallingBlock" index="0" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
-bounce_limit = 500
-previous_block_path = NodePath("")
-next_block_path = NodePath("")
-is_visible = false
-is_enabled = false
+colors = PoolColorArray( 1, 0, 0, 1, 1, 0.454902, 0, 1, 1, 0.909804, 0, 1 )
+is_visible = true
+is_enabled = true
 
-[node name="Sprite" parent="." index="1"]
+[node name="Sprite" parent="." index="0"]
+modulate = Color( 0.533333, 0, 0, 1 )
 texture = ExtResource( 3 )
 
 [node name="Light2D" parent="." index="2"]
-energy = 0.882261
+energy = 0.733606
 

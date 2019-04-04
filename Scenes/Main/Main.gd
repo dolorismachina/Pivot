@@ -6,16 +6,20 @@ var lowest = 0
 
 var in_play = false
 
-var level2 = preload("res://Scenes/Levels/Level2/Level2.tscn").instance()
+var level_path = 'res://Scenes/Levels/Level'
 
+var levels = [
+	preload("res://Scenes/Levels/Level1/Level1.tscn").instance(),
+	preload("res://Scenes/Levels/Level2/Level2.tscn").instance(),
+	preload("res://Scenes/Levels/Level3/Level3.tscn").instance(),
+]
 var current_level
 
+var level_id = 2
+
 func _ready():
-	set_process(true)
-	set_process_input(true)
-	
-	$Player.position = $Level/Pivot/Content/Start.position
-	current_level = $Level
+	print(randi())
+	change_level()
 	
 
 func _unhandled_input(event):
@@ -30,9 +34,8 @@ func _unhandled_input(event):
 					$LevelController.rotate_level($LevelController.Direction.LEFT)
 		
 	if event.is_action_pressed("space"):
-		print('s')
-		$Player.drop()
-		in_play = true
+		start_game()
+		
 		
 func _process(delta):
 	if not in_play:
@@ -41,7 +44,17 @@ func _process(delta):
 	$HUD/MarginContainer/Label.text = str(Input.get_accelerometer())
 	update_score()
 	move_level()
+	
 
+func start_game():
+	$Player.drop()
+	in_play = true
+	current_level.start()
+	
+func stop_game():
+	in_play = false
+	current_level.disable_collision()
+	$Player.stop()	
 
 func move_level():
 	current_level.follow_player($Player)
@@ -53,7 +66,7 @@ func restart():
 	
 	
 func reset_player():
-	var player = ($Player as Player)
+	var player : Player = ($Player as Player)
 	player.position = current_level.position + current_level.get_start_position()
 	player.stop()
 	
@@ -75,28 +88,44 @@ func _on_HUD_reset():
 
 
 func _on_Player_reached_end():
+	print('s')
 	change_level()
+	
 	
 func change_level():
 	print('Main::change_level(): ')
-	in_play = false
-	current_level.queue_free()
-	var l = level2
-	l.connect("ready", self, 'on_level_ready', [l])
-	l.name = 'Level'
-	current_level = l
-	current_level.disable_collision()
-	add_child(l, true)
-	$Player.stop()
+	if level_id == levels.size():
+		print('Max level')
+		return
+		
+	var old_level = current_level
+	
+	if old_level:
+		old_level.queue_free()
+		#stop_game()
+		
+	current_level = levels[level_id]
+	current_level.connect('rotated', $Player, 'on_level_rotated')
+	current_level = current_level
+	add_child(current_level, true)
+	$Player.position = $Level/Pivot/Content/Start.position
+	level_id += 1
+	current_level.position = screen_position_to_world(Vector2(0, 0))
+	#$Player.position = current_level.position + current_level.get_start_position()
+	$Player.tween_to(current_level.position + current_level.get_start_position())
+	$Player.connect('position_reached', current_level, 'on_player_reached_start')
 	
 	
-func on_level_ready(l):
-	print('level ready', l)
+
+func screen_position_to_world(screen_position : Vector2) -> Vector2:
 	var player_pos_on_screen = $Player.get_global_transform_with_canvas().origin
-	
-	l.position = $Player.position - player_pos_on_screen
-	print(l.position + l.get_start_position())
-	#$Player.position = l.position + l.get_start_position()
-	$Player.tween_to(l.position + l.get_start_position())
-	$Player.connect('position_reached', l, 'on_player_reached_start')
-	
+		
+	return ($Player.position - player_pos_on_screen) + screen_position
+
+
+func _on_Player_contact(block):
+	current_level.set_current_block(block)
+
+
+func _on_Player_obstacle_touched():
+	restart()

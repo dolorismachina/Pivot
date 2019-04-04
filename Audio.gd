@@ -21,7 +21,7 @@ func _ready():
 
 func play():
 	var p : AudioStreamPlayer = AudioStreamPlayer.new()
-	p.volume_db = -10
+	p.volume_db = -18
 	add_child(p)
 	p.stream = next_sample()
 	p.play()
