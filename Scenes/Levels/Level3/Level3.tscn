@@ -39,7 +39,6 @@ texture = ExtResource( 2 )
 position = Vector2( 64, 640 )
 is_visible = true
 is_enabled = true
-is_first = true
 
 [node name="Block2" parent="Pivot/Content/Blocks" index="4" instance=ExtResource( 3 )]
 position = Vector2( 192, 640 )

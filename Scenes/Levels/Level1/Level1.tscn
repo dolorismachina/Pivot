@@ -25,7 +25,6 @@ position = Vector2( 150, 350 )
 next_block_path = NodePath("../../../../../Level/Pivot/Content/Blocks/Block2")
 is_visible = true
 is_enabled = true
-is_first = true
 
 [node name="Block2" parent="Pivot/Content/Blocks" index="1" instance=ExtResource( 3 )]
 position = Vector2( 350, 400 )

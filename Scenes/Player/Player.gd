@@ -46,7 +46,6 @@ func collide(collision : KinematicCollision2D) -> void:
 			if block.next_block:
 				next_block = block.next_block
 
-
 	block.contact()
 	bounce_limit = block.bounce_limit
 
