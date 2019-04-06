@@ -15,9 +15,12 @@ var previous_block : Block
 export (bool) var is_visible = false
 export (bool) var is_enabled = false
 
+var block_color = Color()
+
 
 func get_next():
 	return get_node(next_block_path)
+
 
 func _ready():
 	set_random_color()
@@ -40,14 +43,14 @@ func set_random_color():
 	randomize()
 	var random_number = floor(rand_range(0, colors.size() - 1))
 	$Sprite.modulate = colors[random_number]
+	block_color = colors[random_number]
+	
 	
 func glow():
-	var previous_color = $Sprite.modulate
 	$Sprite.modulate += $Sprite.modulate / 2
 	
-	$GlowTween.interpolate_property($Sprite, 'modulate',
-	$GlowTween.modulate, previous_color, 1, 
-	Tween.TRANS_SINE, Tween.EASE_IN_OUT)
+	$GlowTween.interpolate_property($Sprite, 'modulate', $GlowTween.modulate, 
+		block_color, 0.75, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
 	$GlowTween.start()  
 
 
