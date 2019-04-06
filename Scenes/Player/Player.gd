@@ -17,7 +17,7 @@ var next_block : Block
 var last_block : Block
 
 
-func _process(delta : float):
+func _physics_process(delta):
 	var collision : KinematicCollision2D = move(delta)
 	
 	if collision:
