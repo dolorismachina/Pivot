@@ -2,11 +2,11 @@
 
 [ext_resource path="res://Scenes/Main/Main.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Scenes/HUD/HUD.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Assets/Background.png" type="Texture" id=5]
 [ext_resource path="res://Scenes/BlockConnector/BlockConnector.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Environment.tres" type="Environment" id=7]
 [ext_resource path="res://Assets/Meavy_Boy_-_04_-_Unrequited_Attention.ogg" type="AudioStream" id=8]
+[ext_resource path="res://Scenes/HUD/HUD.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Background/Background.tscn" type="PackedScene" id=4]
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 1 )
@@ -16,25 +16,12 @@ position = Vector2( 100, 250 )
 z_index = 100
 horizontal_damping = 0.98
 
+[node name="HUD" parent="." instance=ExtResource( 3 )]
 
-[node name="HUD" parent="." instance=ExtResource( 4 )]
-
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-editor/display_folded = true
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_mirroring = Vector2( 720, 1280 )
-
-[node name="Background" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-visible = false
-self_modulate = Color( 0.294118, 0.439216, 0.160784, 1 )
-texture = ExtResource( 5 )
-centered = false
-region_enabled = true
-region_rect = Rect2( 0, 0, 1440, 2560 )
 
 [node name="BlockConnector" parent="." instance=ExtResource( 6 )]
 position = Vector2( 100, 400 )
+[node name="ParallaxBackground" parent="." instance=ExtResource( 4 )]
 
 [node name="ScoreUpdateTimer" type="Timer" parent="."]
 wait_time = 0.5
