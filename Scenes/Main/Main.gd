@@ -12,10 +12,11 @@ var levels = [
 	preload("res://Scenes/Levels/Level1/Level1.tscn").instance(),
 	preload("res://Scenes/Levels/Level2/Level2.tscn").instance(),
 	preload("res://Scenes/Levels/Level3/Level3.tscn").instance(),
+	preload("res://Scenes/Levels/TestLevel.tscn").instance()
 ]
 var current_level
 
-var level_id = 2
+var level_id = 3
 
 func _ready():
 	print(randi())
