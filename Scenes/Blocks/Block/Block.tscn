@@ -13,7 +13,7 @@ friction = 0.0
 blend_mode = 1
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 63.5345, 7.36743 )
+extents = Vector2( 63.8663, 4.22906 )
 
 [node name="Block" type="StaticBody2D"]
 input_pickable = true
