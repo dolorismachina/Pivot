@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scenes/Levels/Level.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/End.tscn" type="PackedScene" id=2]
@@ -8,10 +8,9 @@
 [ext_resource path="res://Scenes/Blocks/SpinningBlock/SpinningBlock.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/Obstacles/Spikes.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/Collectables/Collectable.tscn" type="PackedScene" id=8]
-[ext_resource path="res://light.png" type="Texture" id=9]
-[ext_resource path="res://Scenes/LevelController/LevelController.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Scenes/MobileController/MobileController.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Scenes/Controllers/MouseController/MouseController.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Scenes/LevelController/LevelController.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scenes/MobileController/MobileController.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Scenes/Controllers/MouseController/MouseController.tscn" type="PackedScene" id=11]
 
 [node name="Level" type="Node2D"]
 script = ExtResource( 1 )
@@ -28,6 +27,7 @@ position = Vector2( 1344, 896 )
 input_pickable = false
 
 [node name="Blocks" type="Node2D" parent="Pivot/Content"]
+editor/display_folded = true
 
 [node name="Block" parent="Pivot/Content/Blocks" instance=ExtResource( 3 )]
 position = Vector2( 576, 960 )
@@ -205,6 +205,7 @@ position = Vector2( 1472, 320 )
 rotation = -0.785397
 
 [node name="Collectables" type="Node2D" parent="Pivot/Content"]
+editor/display_folded = true
 
 [node name="Collectable" parent="Pivot/Content/Collectables" instance=ExtResource( 8 )]
 position = Vector2( 320, 512 )
@@ -248,15 +249,11 @@ position = Vector2( 1472, 448 )
 [node name="Collectable6" parent="Pivot/Content/Collectables" instance=ExtResource( 8 )]
 position = Vector2( 1472, 448 )
 
-[node name="light" type="Sprite" parent="Pivot"]
-scale = Vector2( 0.1, 0.2 )
-texture = ExtResource( 9 )
-
-[node name="LevelController" parent="." instance=ExtResource( 10 )]
+[node name="LevelController" parent="." instance=ExtResource( 9 )]
 rotation_angle = 30
 
-[node name="MobileController" parent="." instance=ExtResource( 11 )]
+[node name="MobileController" parent="." instance=ExtResource( 10 )]
 
-[node name="MouseController" parent="." instance=ExtResource( 12 )]
+[node name="MouseController" parent="." instance=ExtResource( 11 )]
 enabled = false
 
