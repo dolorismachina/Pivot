@@ -11,7 +11,7 @@ export (int) var bounce_limit = 500
 export (float) var horizontal_damping = 0.985
 
 var velocity = Vector2(0, 0)
-var initial_gravity = Vector2(0, 800)
+var initial_gravity = Vector2(0, 1050)
 var gravity = Vector2(0, 0)
 var next_block : Block
 var last_block : Block
