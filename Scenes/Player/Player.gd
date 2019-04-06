@@ -27,7 +27,6 @@ func _physics_process(delta):
 		#$AnimationPlayer.play("bounce")
 		bounce(collision.normal)
 	
-
 func move(delta) -> KinematicCollision2D:
 	velocity += gravity * delta
 	velocity.y = clamp(velocity.y, -bounce_limit, bounce_limit)
@@ -73,9 +72,7 @@ func bounce_proper(normal : Vector2) -> Vector2:
 	
 	return mid * bounce_limit
 	
-	print(velocity.length())
 	
-
 func adjust_velocity():
 	var factor = velocity.y / bounce_limit
 	
