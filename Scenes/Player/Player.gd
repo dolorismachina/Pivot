@@ -53,11 +53,25 @@ func collide(collision : KinematicCollision2D) -> void:
 
 
 func bounce(normal):
-	#initial_gravity = normal * Vector2(1, -1) * 800
-	#velocity = velocity.normalized().bounce(normal).normalized() * bounce_limit
+	if normal.y == 1 or normal.y == -1:
+		velocity = bounce_perpendicular(normal)
+	else:
+		velocity = bounce_proper(normal)
+
+	velocity = bounce_perpendicular(normal)
+		
+
+# Return vector perpendicular to collision normal.	
+func bounce_perpendicular(normal : Vector2) -> Vector2:
+	return normal * bounce_limit
+
+
+# Return vector bounced off the collision normal.
+func bounce_proper(normal : Vector2) -> Vector2:
+	var velocity_bounced = velocity.normalized().bounce(normal)
+	var mid = velocity_bounced.linear_interpolate(normal, 0.5)
 	
-	velocity = normal * bounce_limit
-	
+	return mid * bounce_limit
 	
 	print(velocity.length())
 	
