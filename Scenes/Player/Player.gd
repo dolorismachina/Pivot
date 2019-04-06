@@ -112,6 +112,11 @@ func _on_Area2D_area_entered(area):
 		emit_signal("obstacle_touched")
 		return
 		
+	if area.is_in_group('obstacles'):
+		print('Hit obstacle')
+		emit_signal("obstacle_touched")
+		return
+		
 	if area.name == 'End':
 		emit_signal("reached_end")
 		return
