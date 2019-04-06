@@ -1,26 +1,19 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scenes/Main/Main.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Scenes/BlockConnector/BlockConnector.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Environment.tres" type="Environment" id=7]
-[ext_resource path="res://Assets/Meavy_Boy_-_04_-_Unrequited_Attention.ogg" type="AudioStream" id=8]
 [ext_resource path="res://Scenes/HUD/HUD.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Background/Background.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Environment.tres" type="Environment" id=5]
+[ext_resource path="res://Assets/Meavy_Boy_-_04_-_Unrequited_Attention.ogg" type="AudioStream" id=6]
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 1 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 100, 250 )
-z_index = 100
-horizontal_damping = 0.98
 
 [node name="HUD" parent="." instance=ExtResource( 3 )]
 
-
-[node name="BlockConnector" parent="." instance=ExtResource( 6 )]
-position = Vector2( 100, 400 )
 [node name="ParallaxBackground" parent="." instance=ExtResource( 4 )]
 
 [node name="ScoreUpdateTimer" type="Timer" parent="."]
@@ -28,10 +21,10 @@ wait_time = 0.5
 autostart = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource( 7 )
+environment = ExtResource( 5 )
 
 [node name="AudioBackgroundMusic" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 8 )
+stream = ExtResource( 6 )
 volume_db = -10.0
 autoplay = true
 
