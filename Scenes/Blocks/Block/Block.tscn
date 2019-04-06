@@ -3,8 +3,6 @@
 [ext_resource path="res://Scenes/Blocks/Block/Block.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Blocks/Block/block.png" type="Texture" id=2]
 [ext_resource path="res://Scenes/Blocks/BlockOverlay.png" type="Texture" id=3]
-[ext_resource path="res://light.png" type="Texture" id=4]
-[ext_resource path="res://Light2D.gd" type="Script" id=5]
 
 [sub_resource type="PhysicsMaterial" id=1]
 friction = 0.0
@@ -36,14 +34,6 @@ texture = ExtResource( 3 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 shape = SubResource( 3 )
-
-[node name="Light2D" type="Light2D" parent="."]
-visible = false
-scale = Vector2( 1.87096, 1.96438 )
-texture = ExtResource( 4 )
-texture_scale = 0.7
-energy = 0.703245
-script = ExtResource( 5 )
 
 [node name="GlowTween" type="Tween" parent="."]
 
