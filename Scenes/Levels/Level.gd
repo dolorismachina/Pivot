@@ -40,11 +40,7 @@ func reset_blocks():
 			return
 			
 		var block = (b as Block)
-		if block.is_first:
-			block.enable()
-			block.show()
-		else:
-			block.disable()
+		
 		
 func start():
 	#reset_blocks()

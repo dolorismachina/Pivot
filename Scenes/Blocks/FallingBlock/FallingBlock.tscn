@@ -14,6 +14,3 @@ is_enabled = true
 modulate = Color( 0.533333, 0, 0, 1 )
 texture = ExtResource( 3 )
 
-[node name="Light2D" parent="." index="2"]
-energy = 0.733606
-

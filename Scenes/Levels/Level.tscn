@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/Levels/Level.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/End.tscn" type="PackedScene" id=2]
-[ext_resource path="res://light.png" type="Texture" id=3]
-[ext_resource path="res://Scenes/LevelController/LevelController.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Scenes/MobileController/MobileController.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Scenes/Controllers/MouseController/MouseController.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/LevelController/LevelController.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/MobileController/MobileController.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Controllers/MouseController/MouseController.tscn" type="PackedScene" id=5]
 
 [node name="Level" type="Node2D"]
 script = ExtResource( 1 )
@@ -22,15 +21,11 @@ input_pickable = false
 
 [node name="Blocks" type="Node2D" parent="Pivot/Content"]
 
-[node name="light" type="Sprite" parent="Pivot"]
-scale = Vector2( 0.1, 0.2 )
-texture = ExtResource( 3 )
-
-[node name="LevelController" parent="." instance=ExtResource( 4 )]
+[node name="LevelController" parent="." instance=ExtResource( 3 )]
 rotation_angle = 30
 
-[node name="MobileController" parent="." instance=ExtResource( 5 )]
+[node name="MobileController" parent="." instance=ExtResource( 4 )]
 
-[node name="MouseController" parent="." instance=ExtResource( 6 )]
+[node name="MouseController" parent="." instance=ExtResource( 5 )]
 enabled = false
 
