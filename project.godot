@@ -27,7 +27,7 @@ _global_script_classes=[ {
 "base": "StaticBody2D",
 "class": "FallingBlock",
 "language": "GDScript",
-"path": "res://FallingBlock.gd"
+"path": "res://Scenes/Blocks/FallingBlock/FallingBlock.gd"
 }, {
 "base": "Node2D",
 "class": "Level",

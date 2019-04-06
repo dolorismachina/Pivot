@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scenes/Blocks/Block/Block.tscn" type="PackedScene" id=1]
-[ext_resource path="res://FallingBlock.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/Blocks/FallingBlock/FallingBlock.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/Blocks/FallingBlock/FallingBlock.png" type="Texture" id=3]
 
 [node name="FallingBlock" index="0" instance=ExtResource( 1 )]
