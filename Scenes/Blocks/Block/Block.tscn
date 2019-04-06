@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scenes/Blocks/Block/Block.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Blocks/Block/block.png" type="Texture" id=2]
@@ -17,7 +17,7 @@ extents = Vector2( 63.8663, 4.22906 )
 input_pickable = true
 physics_material_override = SubResource( 1 )
 script = ExtResource( 1 )
-colors = PoolColorArray( 1, 0, 0, 1, 1, 0.454902, 0, 1, 0, 0.8, 0, 1, 0, 0.6, 0.6, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 0.454902, 0, 1, 0, 0, 1, 1, 0.427451, 0, 1, 1, 1, 0.909804, 0, 1, 1, 0.74902, 0, 1 )
+colors = PoolColorArray( 0.94902, 0.282353, 0.439216, 1, 0.94902, 0.776471, 0.376471, 1, 0.027451, 0.94902, 0.701961, 1, 0.0941176, 0.733333, 0.94902, 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 editor/display_folded = true

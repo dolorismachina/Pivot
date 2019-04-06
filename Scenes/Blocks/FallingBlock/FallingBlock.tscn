@@ -4,9 +4,9 @@
 [ext_resource path="res://Scenes/Blocks/FallingBlock/FallingBlock.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/Blocks/FallingBlock/FallingBlock.png" type="Texture" id=3]
 
+
 [node name="FallingBlock" index="0" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
-colors = PoolColorArray( 1, 0, 0, 1, 1, 0.454902, 0, 1, 1, 0.909804, 0, 1 )
 is_visible = true
 is_enabled = true
 
