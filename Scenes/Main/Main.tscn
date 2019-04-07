@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/Main/Main.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/HUD/HUD.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Background/Background.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Environment.tres" type="Environment" id=5]
-[ext_resource path="res://Assets/Meavy_Boy_-_04_-_Unrequited_Attention.ogg" type="AudioStream" id=6]
+[ext_resource path="res://Assets/Meavy_Boy_-_04_-_Unrequited_Attention.ogg" type="AudioStream" id=5]
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 1 )
@@ -21,10 +20,9 @@ wait_time = 0.5
 autostart = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource( 5 )
 
 [node name="AudioBackgroundMusic" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 6 )
+stream = ExtResource( 5 )
 volume_db = -10.0
 autoplay = true
 
