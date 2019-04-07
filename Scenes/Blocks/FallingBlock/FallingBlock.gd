@@ -48,6 +48,7 @@ func reset():
 	is_falling = false
 	position = default_position
 	velocity = 0
+	rotation = 0
 	
 	set_process(false)
 	
