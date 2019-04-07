@@ -9,24 +9,6 @@
 script = ExtResource( 1 )
 floater = ExtResource( 2 )
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
-motion_mirroring = Vector2( 1440, 2560 )
-
-[node name="Untitled" type="Sprite" parent="ParallaxLayer"]
-visible = false
-modulate = Color( 0.952941, 0.94902, 0.521569, 1 )
-position = Vector2( 469.328, 598.88 )
-texture = ExtResource( 3 )
-
-[node name="Background" type="Sprite" parent="ParallaxLayer"]
-modulate = Color( 2, 1.5, 2, 0.71 )
-position = Vector2( 0, -1.58667 )
-scale = Vector2( 2, 2 )
-texture = ExtResource( 4 )
-centered = false
-region_enabled = true
-region_rect = Rect2( 0, 0, 720, 1280 )
-
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="."]
 motion_scale = Vector2( 0.5, 0.5 )
 
@@ -65,7 +47,26 @@ position = Vector2( 449.134, 197.454 )
 rotation = -0.673231
 scale = Vector2( 1, 1 )
 
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2( 1440, 2560 )
+
+[node name="Untitled" type="Sprite" parent="ParallaxLayer"]
+visible = false
+modulate = Color( 0.952941, 0.94902, 0.521569, 1 )
+position = Vector2( 469.328, 598.88 )
+texture = ExtResource( 3 )
+
+[node name="Background" type="Sprite" parent="ParallaxLayer"]
+modulate = Color( 0.419608, 0.721569, 1, 0.603922 )
+position = Vector2( 0, -1.58667 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 4 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 720, 1280 )
+
 [node name="Timer" type="Timer" parent="."]
+wait_time = 0.75
 autostart = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

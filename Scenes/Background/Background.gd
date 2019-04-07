@@ -38,8 +38,14 @@ func add_floater():
 			y = rand_range(0, 1280)
 			angle = rand_range(495, 585)
 		
-	var vec = Vector2(x, y) + -$ParallaxLayer2.position			
+	var vec = get_spawn_position() + -$ParallaxLayer2.position			
 	var f = floater.instance()
 	$ParallaxLayer2.add_child(f)
 	f.position = vec
-	f.rotation_degrees = angle
+	f.rotation_degrees = rand_range(0, 360)
+	
+func get_spawn_position():
+	var x = rand_range(0, 720)
+	var y = rand_range(0, 1280)
+	
+	return Vector2(x, y)
