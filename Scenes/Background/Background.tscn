@@ -1,23 +1,71 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Assets/Untitled.png" type="Texture" id=1]
-[ext_resource path="res://Assets/prism.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/Background/Background.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Background/Floater.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/Untitled.png" type="Texture" id=3]
+[ext_resource path="res://Scenes/Background/prism.png" type="Texture" id=4]
 
 [node name="ParallaxBackground" type="ParallaxBackground"]
+script = ExtResource( 1 )
+floater = ExtResource( 2 )
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="."]
-motion_mirroring = Vector2( 720, 1280 )
+motion_mirroring = Vector2( 1440, 2560 )
 
 [node name="Untitled" type="Sprite" parent="ParallaxLayer"]
+visible = false
 modulate = Color( 0.952941, 0.94902, 0.521569, 1 )
 position = Vector2( 469.328, 598.88 )
-texture = ExtResource( 1 )
+texture = ExtResource( 3 )
 
 [node name="Background" type="Sprite" parent="ParallaxLayer"]
-modulate = Color( 1, 1, 1, 0.976471 )
+modulate = Color( 2, 1.5, 2, 0.71 )
+position = Vector2( 0, -1.58667 )
 scale = Vector2( 2, 2 )
-texture = ExtResource( 2 )
+texture = ExtResource( 4 )
 centered = false
 region_enabled = true
 region_rect = Rect2( 0, 0, 720, 1280 )
 
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="."]
+motion_scale = Vector2( 0.5, 0.5 )
+
+[node name="Floater" parent="ParallaxLayer2" instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 102.912, 235.514 )
+scale = Vector2( 1, 1 )
+
+[node name="Floater2" parent="ParallaxLayer2" instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 172.2, 635.026 )
+rotation = -0.281195
+scale = Vector2( 1, 1 )
+
+[node name="Floater3" parent="ParallaxLayer2" instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 1144.9, 762.405 )
+rotation = 0.435545
+scale = Vector2( 1, 1 )
+
+[node name="Floater5" parent="ParallaxLayer2" instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 384.883, 917.899 )
+rotation = 0.435545
+scale = Vector2( 1, 1 )
+
+[node name="Floater6" parent="ParallaxLayer2" instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 889.446, 224.523 )
+rotation = 0.435545
+scale = Vector2( 1, 1 )
+
+[node name="Floater4" parent="ParallaxLayer2" instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 449.134, 197.454 )
+rotation = -0.673231
+scale = Vector2( 1, 1 )
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
