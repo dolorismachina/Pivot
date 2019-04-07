@@ -7,6 +7,8 @@ enum TiltDirection { LEFT = -1, RIGHT = 1, NONE = 0 }
 var tilt_direction = TiltDirection.NONE
 
 
+func _ready():
+	set_process(false)
 func _process(delta):
 	
 	if not OS.get_name() == 'Android' or not OS.get_name() == 'iOS':

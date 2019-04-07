@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scenes/Levels/Level.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/End.tscn" type="PackedScene" id=2]
@@ -9,8 +9,6 @@
 [ext_resource path="res://Scenes/Obstacles/Spikes.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/Collectables/Collectable.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Scenes/LevelController/LevelController.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Scenes/MobileController/MobileController.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Scenes/Controllers/MouseController/MouseController.tscn" type="PackedScene" id=11]
 
 [node name="Level" type="Node2D"]
 script = ExtResource( 1 )
@@ -251,9 +249,4 @@ position = Vector2( 1472, 448 )
 
 [node name="LevelController" parent="." instance=ExtResource( 9 )]
 rotation_angle = 30
-
-[node name="MobileController" parent="." instance=ExtResource( 10 )]
-
-[node name="MouseController" parent="." instance=ExtResource( 11 )]
-enabled = false
 

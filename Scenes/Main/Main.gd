@@ -26,13 +26,13 @@ func _ready():
 func _unhandled_input(event):
 	if event is InputEventScreenTouch:
 		if $Player.velocity == Vector2(0, 0):
-			$Player.drop()
+			start_game()
 		else:
 			if event.pressed and not event.is_echo():
 				if event.position.x > 720 / 2:
-					$LevelController.rotate_level($LevelController.Direction.RIGHT)
+					current_level.get_node('LevelController').rotate_level(1)
 				else:
-					$LevelController.rotate_level($LevelController.Direction.LEFT)
+					current_level.get_node('LevelController').rotate_level(-1)
 		
 	if event.is_action_pressed("space"):
 		start_game()

@@ -9,9 +9,6 @@ var previous_position : Vector2 = Vector2()
 var distance_moved : Vector2 = Vector2()
 
 
-func _process(delta):
-	$MouseController.update_position($Pivot.get_global_transform_with_canvas().origin)
-
 
 func follow_player(player):
 	$Pivot.position = player.position - position + Vector2(0, -100)

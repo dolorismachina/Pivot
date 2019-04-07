@@ -86,7 +86,7 @@ drag_margin_right = 0.05
 drag_margin_bottom = 0.0
 editor_draw_drag_margin = true
 script = ExtResource( 6 )
-zoom_mobile = Vector2( 0.4, 0.4 )
+zoom_mobile = Vector2( 0.75, 0.75 )
 
 [connection signal="obstacle_touched" from="." to="." method="_on_Player_obstacle_touched"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
