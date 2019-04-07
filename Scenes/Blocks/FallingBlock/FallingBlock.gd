@@ -4,6 +4,8 @@ class_name FallingBlock
 
 
 export (int) var max_touches = 2
+onready var default_position = position
+
 var numbers_touched = 0
 
 var is_falling : bool = false
@@ -39,11 +41,22 @@ func fall() -> void:
 		modulate, modulate - Color(0, 0, 0, 1), 1, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
 	
 	is_falling = true
+
+
+func reset():
+	numbers_touched = 0
+	is_falling = false
+	position = default_position
+	velocity = 0
+	
+	set_process(false)
 	
 
 # Called in reaction to contact with the ball.
 func contact() -> void:
 	.contact()
+	
+	set_process(true)
 	
 	numbers_touched += 1
 	if numbers_touched >= max_touches:

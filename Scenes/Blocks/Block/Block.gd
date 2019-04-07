@@ -113,3 +113,7 @@ func disable_collision():
 func _on_ColliderTimer_timeout():
 	if is_enabled:
 		$CollisionShape2D.disabled = false
+		
+
+func reset():
+	pass

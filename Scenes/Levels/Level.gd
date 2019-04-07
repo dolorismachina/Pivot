@@ -27,16 +27,24 @@ func reset():
 	$Pivot.rotation_degrees = 0
 	
 	reset_blocks()
-	
+	reset_collectables()
+
+
+func reset_collectables():
+	var items = $Pivot/Content/Collectables.get_children()
+	for item in items:
+		item.reset()
+			
 
 func reset_blocks():
+	# Reset blocks to default state
 	var blocks = $Pivot/Content/Blocks.get_children()
-	
-	for b in blocks:
-		if not b is Block:
+	for block in blocks:
+		if not block is Block:
 			return
 			
-		var block = (b as Block)
+		block = (block as Block)
+		block.reset()
 		
 		
 func start():
