@@ -59,38 +59,6 @@ func contact():
 	$ColliderTimer.start()
 	$CollisionShape2D.disabled = true
 	
-	if previous_block:
-		previous_block.fade_out()
-		previous_block.disable()
-	
-	if next_block:
-		next_block.fade_in()
-		
-		next_block.enable()
-
-
-func fade_out():
-	var m1 = get_node('./Sprite').modulate
-	var m1_new = Color(m1.r, m1.g, m1.b, 0.05)
-	$Tween.interpolate_property($Sprite, 'modulate', m1, m1_new, 0.5, Tween.TRANS_CUBIC, Tween.EASE_IN)
-	
-	# var m2 = previous_block.get_node('./Sprite').modulate
-	# var m2_new = Color(m2.r, m2.g, m2.b, 0)
-	# $Tween.interpolate_property(previous_block.get_node('./Sprite'), 'modulate', m2, m2_new, 0.5, Tween.TRANS_CUBIC, Tween.EASE_IN)
-	
-	$Tween.start()
-
-
-func fade_in():
-	var m1 = get_node('./Sprite').modulate
-	var m1_new = Color(m1.r, m1.g, m1.b, 1)
-	$Tween.interpolate_property($Sprite, 'modulate', m1, m1_new, 0.5, Tween.TRANS_CUBIC, Tween.EASE_IN)
-	
-	# var m2 = next_block.get_node('./Sprite').modulate
-	# var m2_new = Color(m2.r, m2.g, m2.b, 0.1)
-	# $Tween.interpolate_property(next_block.get_node('./Sprite'), 'modulate', m2, m2_new, 0.5, Tween.TRANS_CUBIC, Tween.EASE_IN)
-
-	$Tween.start()
 
 func show():
 	$Sprite.visible = true
@@ -113,7 +81,13 @@ func disable_collision():
 func _on_ColliderTimer_timeout():
 	if is_enabled:
 		$CollisionShape2D.disabled = false
-		
+
+
+func activate():
+	pass
+	
+func deactivate():
+	pass		
 
 func reset():
 	pass

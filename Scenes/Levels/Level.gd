@@ -9,7 +9,6 @@ var previous_position : Vector2 = Vector2()
 var distance_moved : Vector2 = Vector2()
 
 
-
 func follow_player(player):
 	$Pivot.position = player.position - position + Vector2(0, -100)
 	
@@ -45,11 +44,15 @@ func reset_blocks():
 			
 		block = (block as Block)
 		block.reset()
+		block.deactivate()
 		
 		
 func start():
-	#reset_blocks()
-	pass
+	for block in $Pivot/Content/Blocks.get_children():
+		if not block is Block:
+			return
+			
+		(block as Block).activate()
 	
 	
 func get_start_position() -> Vector2:
