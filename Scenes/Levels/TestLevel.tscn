@@ -181,22 +181,22 @@ is_enabled = true
 position = Vector2( 448, 256 )
 
 [node name="Spikes4" parent="Pivot/Content/Blocks" instance=ExtResource( 7 )]
-position = Vector2( 192, 960 )
+position = Vector2( 190.411, 968.873 )
 
 [node name="Spikes5" parent="Pivot/Content/Blocks" instance=ExtResource( 7 )]
-position = Vector2( 448, 960 )
+position = Vector2( 448, 968.873 )
 
 [node name="Spikes6" parent="Pivot/Content/Blocks" instance=ExtResource( 7 )]
-position = Vector2( 704, 960 )
+position = Vector2( 704, 968.873 )
 
 [node name="Spikes7" parent="Pivot/Content/Blocks" instance=ExtResource( 7 )]
-position = Vector2( 960, 960 )
+position = Vector2( 960, 968.873 )
 
 [node name="Spikes8" parent="Pivot/Content/Blocks" instance=ExtResource( 7 )]
-position = Vector2( 960, 320 )
+position = Vector2( 961.105, 264.841 )
 
 [node name="Spikes9" parent="Pivot/Content/Blocks" instance=ExtResource( 7 )]
-position = Vector2( 1216, 384 )
+position = Vector2( 1216, 392.841 )
 
 [node name="Spikes10" parent="Pivot/Content/Blocks" instance=ExtResource( 7 )]
 position = Vector2( 1472, 320 )
