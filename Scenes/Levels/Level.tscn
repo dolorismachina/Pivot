@@ -21,6 +21,10 @@ input_pickable = false
 
 [node name="Blocks" type="Node2D" parent="Pivot/Content"]
 
+[node name="Collectables" type="Node2D" parent="Pivot/Content"]
+
+[node name="Obstacles" type="Node2D" parent="Pivot/Content"]
+
 [node name="LevelController" parent="." instance=ExtResource( 3 )]
 rotation_angle = 30
 
