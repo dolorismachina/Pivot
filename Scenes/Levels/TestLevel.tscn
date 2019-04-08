@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scenes/Levels/Level.gd" type="Script" id=1]
-[ext_resource path="res://Scenes/End.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/End/End.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Blocks/Block/Block.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Blocks/FallingBlock/FallingBlock.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Blocks/BouncyBlock/BouncyBlock.tscn" type="PackedScene" id=5]

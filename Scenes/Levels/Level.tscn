@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/Levels/Level.gd" type="Script" id=1]
-[ext_resource path="res://Scenes/End.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/End/End.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/LevelController/LevelController.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/MobileController/MobileController.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Controllers/MouseController/MouseController.tscn" type="PackedScene" id=5]
