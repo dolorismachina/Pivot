@@ -5,18 +5,16 @@ export (Array) var samples : Array
 var current_sample_index = 0
 
 
-var audio_path = 'res://Assets/Audio/'
+var audio_path = 'res://Scenes/Player/'
 
 
 func _ready():
 	randomize()
 	
-	samples.append(load(audio_path + 'c.wav'))
-	samples.append(load(audio_path + 'd.wav'))
-	samples.append(load(audio_path + 'e.wav'))
-	samples.append(load(audio_path + 'g.wav'))
-	samples.append(load(audio_path + 'a.wav'))
-	samples.append(load(audio_path + 'c2.wav'))
+	samples.append(load(audio_path + 'Jump_4.wav'))
+	samples.append(load(audio_path + 'Jump_5.wav'))
+	samples.append(load(audio_path + 'Jump_6.wav'))
+
 	
 
 func play():
