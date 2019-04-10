@@ -28,7 +28,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 1, 2, 3, 4 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( -32, 0 ), Vector2( 0, 0 ), Vector2( 32, 0 ), Vector2( 0, 0 ) ]
+"values": [ Vector2( 0, 0 ), Vector2( 0, -32 ), Vector2( 0, 0 ), Vector2( 0, 32 ), Vector2( 0, 0 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("CollisionShape2D:position")
@@ -40,7 +40,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 1, 2, 3, 4 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( -32, 0 ), Vector2( 0, 0 ), Vector2( 32, 0 ), Vector2( 0, 0 ) ]
+"values": [ Vector2( 0, 0 ), Vector2( 0, -32 ), Vector2( 0, 0 ), Vector2( 0, 32 ), Vector2( 0, 0 ) ]
 }
 
 [node name="BlockSlidingVertical" type="StaticBody2D"]
@@ -53,6 +53,7 @@ is_enabled = true
 
 [node name="Sprite" type="Sprite" parent="."]
 material = SubResource( 3 )
+position = Vector2( 0, 25.3108 )
 rotation = 0.00028198
 texture = ExtResource( 2 )
 
@@ -62,6 +63,7 @@ self_modulate = Color( 1, 1, 1, 0.768627 )
 texture = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 25.3108 )
 shape = SubResource( 4 )
 
 [node name="GlowTween" type="Tween" parent="."]
