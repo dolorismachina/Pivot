@@ -1,0 +1,79 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Scenes/Blocks/BlockSlidingHorizontal/BlockSlidingHorizontal.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Blocks/Block/block.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/Blocks/BlockOverlay.png" type="Texture" id=3]
+
+[sub_resource type="PhysicsMaterial" id=2]
+friction = 0.0
+
+[sub_resource type="CanvasItemMaterial" id=3]
+blend_mode = 1
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 63.8663, 4.22906 )
+
+[sub_resource type="Animation" id=1]
+resource_name = "slide"
+length = 4.0
+loop = true
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2, 3, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -32, 0 ), Vector2( 0, 0 ), Vector2( 32, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CollisionShape2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 2, 3, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -32, 0 ), Vector2( 0, 0 ), Vector2( 32, 0 ), Vector2( 0, 0 ) ]
+}
+
+[node name="BlockSlidingVertical" type="StaticBody2D"]
+input_pickable = true
+physics_material_override = SubResource( 2 )
+script = ExtResource( 1 )
+colors = PoolColorArray( 0.94902, 0.282353, 0.439216, 1, 0.94902, 0.776471, 0.376471, 1, 0.027451, 0.94902, 0.701961, 1, 0.0941176, 0.733333, 0.94902, 1 )
+is_visible = true
+is_enabled = true
+
+[node name="Sprite" type="Sprite" parent="."]
+material = SubResource( 3 )
+rotation = 0.00028198
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+
+[node name="BlockOverlay" type="Sprite" parent="Sprite"]
+visible = false
+self_modulate = Color( 1, 1, 1, 0.768627 )
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 4 )
+
+[node name="GlowTween" type="Tween" parent="."]
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="ColliderTimer" type="Timer" parent="."]
+wait_time = 0.2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "slide"
+anims/slide = SubResource( 1 )
+
+[connection signal="timeout" from="ColliderTimer" to="." method="_on_ColliderTimer_timeout"]
