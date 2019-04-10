@@ -4,16 +4,13 @@
 [ext_resource path="res://Scenes/Blocks/BouncyBlock/BouncyBlock.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/Blocks/BouncyBlock/BouncyBlock.png" type="Texture" id=3]
 
-
-
-
-[node name="BouncyBlock" index="0" instance=ExtResource( 1 )]
+[node name="BouncyBlock" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 bounce_limit = 800
 
-[node name="Sprite" parent="." index="1"]
+[node name="Sprite" parent="." index="0"]
 texture = ExtResource( 3 )
 
-[node name="Light2D" parent="." index="2"]
-energy = 0.94354
+[node name="CollisionShape2D" parent="." index="1"]
+visible = false
 

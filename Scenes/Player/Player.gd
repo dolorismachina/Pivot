@@ -18,7 +18,8 @@ var last_block : Block
 
 
 func _physics_process(delta):
-	rotation = abs(velocity.angle())
+	rotation = velocity.angle()
+	print(rotation)
 	var collision : KinematicCollision2D = move(delta)
 	
 	if collision:
@@ -27,7 +28,8 @@ func _physics_process(delta):
 		$Audio.play()
 		#$AnimationPlayer.play("bounce")
 		bounce(collision.normal)
-	
+		
+		
 func move(delta) -> KinematicCollision2D:
 	velocity += gravity * delta
 	velocity.y = clamp(velocity.y, -bounce_limit, bounce_limit)

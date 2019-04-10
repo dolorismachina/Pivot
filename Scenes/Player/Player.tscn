@@ -1,53 +1,51 @@
 [gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scenes/Player/Player.gd" type="Script" id=1]
-[ext_resource path="res://Scenes/Player/Trail.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/Player/tw.png" type="Texture" id=2]
 [ext_resource path="res://Scenes/Player/Ball.png" type="Texture" id=3]
 [ext_resource path="res://Scenes/Player/Player.tres" type="Animation" id=4]
 [ext_resource path="res://Audio.gd" type="Script" id=5]
 [ext_resource path="res://Scenes/Camera2D.gd" type="Script" id=6]
 
-[sub_resource type="Curve" id=8]
+[sub_resource type="Curve" id=1]
+min_value = 0.1
 max_value = 0.5
-_data = [ Vector2( 0, 0.252093 ), 0.0, -0.070336, 0, 1, Vector2( 1, 0.181757 ), -0.070336, 0.0, 1, 0 ]
+_data = [ Vector2( 0, 0.271531 ), 0.0, -0.418914, 0, 1, Vector2( 0.409465, 0.1 ), -2.40263, 0.0, 0, 0 ]
 
-[sub_resource type="Gradient" id=9]
-offsets = PoolRealArray( 0, 0.745536 )
-colors = PoolColorArray( 0.511719, 0.954224, 1, 1, 0.96875, 0.277842, 0.0378418, 0 )
+[sub_resource type="Gradient" id=5]
+offsets = PoolRealArray( 0, 0.474453 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
 
-[sub_resource type="CircleShape2D" id=6]
-radius = 45.3875
+[sub_resource type="CircleShape2D" id=3]
+radius = 12.4919
 
-[sub_resource type="CircleShape2D" id=7]
-radius = 48.373
+[sub_resource type="CircleShape2D" id=4]
+radius = 12.838
 
 [node name="Player" type="KinematicBody2D"]
-scale = Vector2( 0.25, 0.25 )
 script = ExtResource( 1 )
 horizontal_damping = 0.975
 
 [node name="Particles2D" type="CPUParticles2D" parent="."]
-position = Vector2( 0.699, 0 )
-amount = 30
-lifetime = 0.5
+visible = false
+rotation = 3.14159
+amount = 5
 local_coords = false
 texture = ExtResource( 2 )
-spread = 5.0
+spread = 0.0
 flatness = 1.0
 gravity = Vector2( 0, 0 )
 initial_velocity = 0.0
-angular_velocity = 5.97303
-scale_amount = 0.5
-scale_amount_curve = SubResource( 8 )
-color_ramp = SubResource( 9 )
+scale_amount_curve = SubResource( 1 )
+color_ramp = SubResource( 5 )
 
 [node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 1.5, 1.5 )
 texture = ExtResource( 3 )
 offset = Vector2( -0.1, -0.39 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 6 )
+visible = false
+shape = SubResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 playback_speed = 0.25
@@ -57,9 +55,11 @@ anims/bounce = ExtResource( 4 )
 script = ExtResource( 5 )
 
 [node name="Area2D" type="Area2D" parent="."]
+editor/display_folded = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource( 7 )
+visible = false
+shape = SubResource( 4 )
 
 [node name="Tween" type="Tween" parent="."]
 

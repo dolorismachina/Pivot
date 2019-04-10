@@ -44,6 +44,21 @@ position = Vector2( 1856, 960 )
 is_visible = true
 is_enabled = true
 
+[node name="Block29" parent="Pivot/Content/Blocks" instance=ExtResource( 3 )]
+position = Vector2( 2880, 960 )
+is_visible = true
+is_enabled = true
+
+[node name="Block48" parent="Pivot/Content/Blocks" instance=ExtResource( 3 )]
+position = Vector2( 3904, 960 )
+is_visible = true
+is_enabled = true
+
+[node name="Block52" parent="Pivot/Content/Blocks" instance=ExtResource( 3 )]
+position = Vector2( 4928, 960 )
+is_visible = true
+is_enabled = true
+
 [node name="Block17" parent="Pivot/Content/Blocks" instance=ExtResource( 3 )]
 position = Vector2( 1216, 960 )
 is_visible = true
@@ -51,6 +66,21 @@ is_enabled = true
 
 [node name="Block25" parent="Pivot/Content/Blocks" instance=ExtResource( 3 )]
 position = Vector2( 2496, 960 )
+is_visible = true
+is_enabled = true
+
+[node name="Block30" parent="Pivot/Content/Blocks" instance=ExtResource( 3 )]
+position = Vector2( 3520, 960 )
+is_visible = true
+is_enabled = true
+
+[node name="Block45" parent="Pivot/Content/Blocks" instance=ExtResource( 3 )]
+position = Vector2( 4544, 960 )
+is_visible = true
+is_enabled = true
+
+[node name="Block50" parent="Pivot/Content/Blocks" instance=ExtResource( 3 )]
+position = Vector2( 5568, 960 )
 is_visible = true
 is_enabled = true
 
@@ -74,6 +104,21 @@ position = Vector2( 1984, 960 )
 is_visible = true
 is_enabled = true
 
+[node name="Block36" parent="Pivot/Content/Blocks" instance=ExtResource( 3 )]
+position = Vector2( 3008, 960 )
+is_visible = true
+is_enabled = true
+
+[node name="Block44" parent="Pivot/Content/Blocks" instance=ExtResource( 3 )]
+position = Vector2( 4032, 960 )
+is_visible = true
+is_enabled = true
+
+[node name="Block49" parent="Pivot/Content/Blocks" instance=ExtResource( 3 )]
+position = Vector2( 5056, 960 )
+is_visible = true
+is_enabled = true
+
 [node name="Block14" parent="Pivot/Content/Blocks" instance=ExtResource( 3 )]
 position = Vector2( 320, 960 )
 is_visible = true
@@ -84,6 +129,21 @@ position = Vector2( 1600, 960 )
 is_visible = true
 is_enabled = true
 
+[node name="Block33" parent="Pivot/Content/Blocks" instance=ExtResource( 3 )]
+position = Vector2( 2624, 960 )
+is_visible = true
+is_enabled = true
+
+[node name="Block46" parent="Pivot/Content/Blocks" instance=ExtResource( 3 )]
+position = Vector2( 3648, 960 )
+is_visible = true
+is_enabled = true
+
+[node name="Block53" parent="Pivot/Content/Blocks" instance=ExtResource( 3 )]
+position = Vector2( 4672, 960 )
+is_visible = true
+is_enabled = true
+
 [node name="Block38" parent="Pivot/Content/Blocks" instance=ExtResource( 3 )]
 position = Vector2( 968.162, 792.486 )
 is_visible = true
@@ -91,6 +151,21 @@ is_enabled = true
 
 [node name="Block28" parent="Pivot/Content/Blocks" instance=ExtResource( 3 )]
 position = Vector2( 2240, 960 )
+is_visible = true
+is_enabled = true
+
+[node name="Block37" parent="Pivot/Content/Blocks" instance=ExtResource( 3 )]
+position = Vector2( 3264, 960 )
+is_visible = true
+is_enabled = true
+
+[node name="Block41" parent="Pivot/Content/Blocks" instance=ExtResource( 3 )]
+position = Vector2( 4288, 960 )
+is_visible = true
+is_enabled = true
+
+[node name="Block55" parent="Pivot/Content/Blocks" instance=ExtResource( 3 )]
+position = Vector2( 5312, 960 )
 is_visible = true
 is_enabled = true
 
@@ -119,6 +194,21 @@ position = Vector2( 2112, 960 )
 is_visible = true
 is_enabled = true
 
+[node name="Block39" parent="Pivot/Content/Blocks" instance=ExtResource( 3 )]
+position = Vector2( 3136, 960 )
+is_visible = true
+is_enabled = true
+
+[node name="Block42" parent="Pivot/Content/Blocks" instance=ExtResource( 3 )]
+position = Vector2( 4160, 960 )
+is_visible = true
+is_enabled = true
+
+[node name="Block56" parent="Pivot/Content/Blocks" instance=ExtResource( 3 )]
+position = Vector2( 5184, 960 )
+is_visible = true
+is_enabled = true
+
 [node name="Block31" parent="Pivot/Content/Blocks" instance=ExtResource( 3 )]
 position = Vector2( 456.162, 792.486 )
 is_visible = true
@@ -129,6 +219,21 @@ position = Vector2( 1728, 960 )
 is_visible = true
 is_enabled = true
 
+[node name="Block35" parent="Pivot/Content/Blocks" instance=ExtResource( 3 )]
+position = Vector2( 2752, 960 )
+is_visible = true
+is_enabled = true
+
+[node name="Block47" parent="Pivot/Content/Blocks" instance=ExtResource( 3 )]
+position = Vector2( 3776, 960 )
+is_visible = true
+is_enabled = true
+
+[node name="Block51" parent="Pivot/Content/Blocks" instance=ExtResource( 3 )]
+position = Vector2( 4800, 960 )
+is_visible = true
+is_enabled = true
+
 [node name="Block16" parent="Pivot/Content/Blocks" instance=ExtResource( 3 )]
 position = Vector2( 1088, 960 )
 is_visible = true
@@ -136,6 +241,21 @@ is_enabled = true
 
 [node name="Block20" parent="Pivot/Content/Blocks" instance=ExtResource( 3 )]
 position = Vector2( 2368, 960 )
+is_visible = true
+is_enabled = true
+
+[node name="Block40" parent="Pivot/Content/Blocks" instance=ExtResource( 3 )]
+position = Vector2( 3392, 960 )
+is_visible = true
+is_enabled = true
+
+[node name="Block43" parent="Pivot/Content/Blocks" instance=ExtResource( 3 )]
+position = Vector2( 4416, 960 )
+is_visible = true
+is_enabled = true
+
+[node name="Block54" parent="Pivot/Content/Blocks" instance=ExtResource( 3 )]
+position = Vector2( 5440, 960 )
 is_visible = true
 is_enabled = true
 
@@ -168,17 +288,21 @@ is_enabled = true
 
 [node name="FallingBlock" parent="Pivot/Content/Blocks" instance=ExtResource( 4 )]
 position = Vector2( 640, 256 )
+physics_material_override = SubResource( 2 )
 
 [node name="BouncyBlock" parent="Pivot/Content/Blocks" instance=ExtResource( 5 )]
 position = Vector2( 1088, 384 )
+physics_material_override = SubResource( 2 )
 is_visible = true
 is_enabled = true
 
 [node name="SpinningBlock" parent="Pivot/Content/Blocks" instance=ExtResource( 6 )]
 position = Vector2( 448, 256 )
+physics_material_override = SubResource( 2 )
 
 [node name="BlockSlidingHorizontal" parent="Pivot/Content/Blocks" instance=ExtResource( 7 )]
 position = Vector2( 323.761, 576 )
+physics_material_override = SubResource( 2 )
 
 [node name="Spikes4" parent="Pivot/Content/Blocks" instance=ExtResource( 8 )]
 position = Vector2( 190.411, 968.873 )
@@ -204,9 +328,6 @@ rotation = -0.785397
 
 [node name="BlockSlidingVertical" parent="Pivot/Content/Blocks" instance=ExtResource( 9 )]
 position = Vector2( 832, 256 )
-input_pickable = true
-physics_material_override = SubResource( 2 )
-colors = PoolColorArray( 0.94902, 0.282353, 0.439216, 1, 0.94902, 0.776471, 0.376471, 1, 0.027451, 0.94902, 0.701961, 1, 0.0941176, 0.733333, 0.94902, 1 )
 
 [node name="Collectables" type="Node2D" parent="Pivot/Content"]
 
