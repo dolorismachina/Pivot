@@ -10,11 +10,11 @@
 [sub_resource type="Curve" id=1]
 min_value = 0.1
 max_value = 0.5
-_data = [ Vector2( 0, 0.271531 ), 0.0, -0.418914, 0, 1, Vector2( 0.409465, 0.1 ), -2.40263, 0.0, 0, 0 ]
+_data = [ Vector2( 0, 0.262822 ), 0.0, -0.710897, 0, 0, Vector2( 0.481429, 0.1 ), 0.0589134, 0.0, 0, 0 ]
 
 [sub_resource type="Gradient" id=5]
 offsets = PoolRealArray( 0, 0.474453 )
-colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
+colors = PoolColorArray( 0.929412, 0.984314, 0.0313726, 0.807843, 1, 1, 1, 0 )
 
 [sub_resource type="CircleShape2D" id=3]
 radius = 12.4919
@@ -27,9 +27,10 @@ script = ExtResource( 1 )
 horizontal_damping = 0.975
 
 [node name="Particles2D" type="CPUParticles2D" parent="."]
-visible = false
 rotation = 3.14159
-amount = 5
+amount = 60
+lifetime = 0.25
+fixed_fps = 60
 local_coords = false
 texture = ExtResource( 2 )
 spread = 0.0
