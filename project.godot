@@ -83,6 +83,10 @@ window/handheld/orientation="portrait"
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 
+[editor_plugins]
+
+enabled=PoolStringArray( "swipe-detector" )
+
 [input]
 
 mouse_left={

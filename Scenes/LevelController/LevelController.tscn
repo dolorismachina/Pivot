@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scenes/LevelController/LevelController.gd" type="Script" id=1]
+[ext_resource path="res://addons/swipe-detector/swipe_detector.gd" type="Script" id=2]
+[ext_resource path="res://addons/swipe-detector/icon.png" type="Texture" id=3]
 
 [node name="LevelController" type="Node2D"]
 script = ExtResource( 1 )
@@ -8,4 +10,13 @@ rotation_angle = 15
 
 [node name="Tween" type="Tween" parent="."]
 
+[node name="SwipeDetector" type="Node" parent="."]
+script = ExtResource( 2 )
+__meta__ = {
+"_editor_icon": ExtResource( 3 )
+}
+duration_threshold = 0.03
+directions_mode = "Four Directions"
+
 [connection signal="tween_completed" from="Tween" to="." method="_on_Tween_tween_completed"]
+[connection signal="swipe_ended" from="SwipeDetector" to="." method="_on_SwipeDetector_swipe_ended"]

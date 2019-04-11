@@ -55,3 +55,10 @@ func rotate_level(direction):
 func _on_Tween_tween_completed(object, key):
 	is_rotating = false
 	
+
+func _on_SwipeDetector_swipe_ended(gesture):
+	match gesture.get_direction():
+		'right':
+			rotate_level(1)
+		'left':
+			rotate_level(-1)
