@@ -1,12 +1,9 @@
 extends Node2D
-
 class_name Pivot
 
-var lowest = 0
 
+var score = 0
 var in_play = false
-
-var level_path = 'res://Scenes/Levels/Level'
 
 var levels = [
 	preload("res://Scenes/Levels/Level1/Level1.tscn").instance(),
@@ -14,9 +11,10 @@ var levels = [
 	preload("res://Scenes/Levels/Level3/Level3.tscn").instance(),
 	preload("res://Scenes/Levels/TestLevel.tscn").instance()
 ]
-var current_level
 
+var current_level
 var level_id = 3
+
 
 func _ready():
 	change_level()
@@ -35,8 +33,6 @@ func _process(delta):
 	if not in_play:
 		return
 		
-	$HUD/MarginContainer/Label.text = str(Input.get_accelerometer())
-	update_score()
 	move_level()
 	
 
@@ -45,16 +41,19 @@ func start_game():
 	in_play = true
 	current_level.start()
 	
+	
 func stop_game():
 	in_play = false
 	current_level.disable_collision()
 	$Player.stop()	
+
 
 func move_level():
 	current_level.follow_player($Player)
 	
 
 func restart():
+	reset_score()
 	reset_player()
 	current_level.reset()
 	
@@ -64,25 +63,20 @@ func reset_player():
 	player.position = current_level.position + current_level.get_start_position()
 	player.stop()
 	
+
+func reset_score():
+	score = 0
+	$HUD.update_score(score)
 	
-func update_score():
-	if $Player.position.y > lowest:
-		lowest = floor($Player.position.y)
-
-
-func _on_ScoreUpdateTimer_timeout():
-	$HUD/MarginContainer/Score.text = str(lowest - 250)
-
-
 func _on_TouchScreenButton_pressed():
 	restart()
+
 
 func _on_HUD_reset():
 	restart()
 
 
 func _on_Player_reached_end():
-	print('s')
 	change_level()
 	
 	
@@ -109,7 +103,6 @@ func change_level():
 	$Player.tween_to(current_level.position + current_level.get_start_position())
 	$Player.connect('position_reached', current_level, 'on_player_reached_start')
 	
-	
 
 func screen_position_to_world(screen_position : Vector2) -> Vector2:
 	var player_pos_on_screen = $Player.get_global_transform_with_canvas().origin
@@ -123,3 +116,8 @@ func _on_Player_contact(block):
 
 func _on_Player_obstacle_touched():
 	restart()
+
+
+func _on_Player_collectable_collected(value):
+	score += value
+	$HUD.update_score(score)

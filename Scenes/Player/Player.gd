@@ -5,6 +5,7 @@ class_name Player
 signal reached_end
 signal position_reached
 signal obstacle_touched
+signal collectable_collected(value)
 
 
 export (int) var bounce_limit = 500
@@ -104,10 +105,13 @@ func enable():
 	$CollisionShape2D.disabled = false
 	
 
+
 func _on_Area2D_area_entered(area):
 	if area.is_in_group('collectables'):
 		print('Got a collectable!')
 		area.collect()
+		emit_signal("collectable_collected", area.value)
+		
 		return 
 		
 	if area.is_in_group('enemies'):
@@ -138,4 +142,3 @@ func _on_Tween_tween_completed(object, key):
 
 func on_level_rotated(direction, angle):
 	velocity = velocity.rotated(deg2rad((angle / 1.5) * direction))
-
