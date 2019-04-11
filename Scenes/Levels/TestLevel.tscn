@@ -12,7 +12,7 @@
 [ext_resource path="res://Scenes/Collectables/Collectable.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Scenes/LevelController/LevelController.tscn" type="PackedScene" id=11]
 
-[sub_resource type="PhysicsMaterial" id=2]
+[sub_resource type="PhysicsMaterial" id=1]
 friction = 0.0
 
 [node name="Level" type="Node2D"]
@@ -86,6 +86,168 @@ is_enabled = true
 
 [node name="Block7" parent="Pivot/Content/Blocks" instance=ExtResource( 3 )]
 position = Vector2( 64, 960 )
+is_visible = true
+is_enabled = true
+
+[node name="Block8" parent="Pivot/Content/Blocks" instance=ExtResource( 3 )]
+position = Vector2( 0, 128 )
+rotation = 1.57079
+is_visible = true
+is_enabled = true
+
+[node name="Block60" parent="Pivot/Content/Blocks" instance=ExtResource( 3 )]
+position = Vector2( 64, 64 )
+rotation = 3.14159
+is_visible = true
+is_enabled = true
+
+[node name="Block65" parent="Pivot/Content/Blocks" instance=ExtResource( 3 )]
+position = Vector2( 576, 64 )
+rotation = 3.14159
+is_visible = true
+is_enabled = true
+
+[node name="Block69" parent="Pivot/Content/Blocks" instance=ExtResource( 3 )]
+position = Vector2( 1088, 64 )
+rotation = 3.14159
+is_visible = true
+is_enabled = true
+
+[node name="Block61" parent="Pivot/Content/Blocks" instance=ExtResource( 3 )]
+position = Vector2( 192, 64 )
+rotation = 3.14159
+is_visible = true
+is_enabled = true
+
+[node name="Block64" parent="Pivot/Content/Blocks" instance=ExtResource( 3 )]
+position = Vector2( 704, 64 )
+rotation = 3.14159
+is_visible = true
+is_enabled = true
+
+[node name="Block70" parent="Pivot/Content/Blocks" instance=ExtResource( 3 )]
+position = Vector2( 1216, 64 )
+rotation = 3.14159
+is_visible = true
+is_enabled = true
+
+[node name="Block62" parent="Pivot/Content/Blocks" instance=ExtResource( 3 )]
+position = Vector2( 320, 64 )
+rotation = 3.14159
+is_visible = true
+is_enabled = true
+
+[node name="Block67" parent="Pivot/Content/Blocks" instance=ExtResource( 3 )]
+position = Vector2( 832, 64 )
+rotation = 3.14159
+is_visible = true
+is_enabled = true
+
+[node name="Block71" parent="Pivot/Content/Blocks" instance=ExtResource( 3 )]
+position = Vector2( 1344, 64 )
+rotation = 3.14159
+is_visible = true
+is_enabled = true
+
+[node name="Block63" parent="Pivot/Content/Blocks" instance=ExtResource( 3 )]
+position = Vector2( 448, 64 )
+rotation = 3.14159
+is_visible = true
+is_enabled = true
+
+[node name="Block66" parent="Pivot/Content/Blocks" instance=ExtResource( 3 )]
+position = Vector2( 960, 64 )
+rotation = 3.14159
+is_visible = true
+is_enabled = true
+
+[node name="Block68" parent="Pivot/Content/Blocks" instance=ExtResource( 3 )]
+position = Vector2( 1472, 64 )
+rotation = 3.14159
+is_visible = true
+is_enabled = true
+
+[node name="Block72" parent="Pivot/Content/Blocks" instance=ExtResource( 3 )]
+position = Vector2( 1600, 64 )
+rotation = 3.14159
+is_visible = true
+is_enabled = true
+
+[node name="Block15" parent="Pivot/Content/Blocks" instance=ExtResource( 3 )]
+position = Vector2( 0, 256 )
+rotation = 1.57079
+is_visible = true
+is_enabled = true
+
+[node name="Block74" parent="Pivot/Content/Blocks" instance=ExtResource( 3 )]
+position = Vector2( 1664, 128 )
+rotation = 1.57079
+is_visible = true
+is_enabled = true
+
+[node name="Block18" parent="Pivot/Content/Blocks" instance=ExtResource( 3 )]
+position = Vector2( 0, 384 )
+rotation = 1.57079
+is_visible = true
+is_enabled = true
+
+[node name="Block76" parent="Pivot/Content/Blocks" instance=ExtResource( 3 )]
+position = Vector2( 1664, 256 )
+rotation = 1.57079
+is_visible = true
+is_enabled = true
+
+[node name="Block19" parent="Pivot/Content/Blocks" instance=ExtResource( 3 )]
+position = Vector2( 0, 512 )
+rotation = 1.57079
+is_visible = true
+is_enabled = true
+
+[node name="Block77" parent="Pivot/Content/Blocks" instance=ExtResource( 3 )]
+position = Vector2( 1664, 384 )
+rotation = 1.57079
+is_visible = true
+is_enabled = true
+
+[node name="Block57" parent="Pivot/Content/Blocks" instance=ExtResource( 3 )]
+position = Vector2( 0, 640 )
+rotation = 1.57079
+is_visible = true
+is_enabled = true
+
+[node name="Block78" parent="Pivot/Content/Blocks" instance=ExtResource( 3 )]
+position = Vector2( 1664, 512 )
+rotation = 1.57079
+is_visible = true
+is_enabled = true
+
+[node name="Block58" parent="Pivot/Content/Blocks" instance=ExtResource( 3 )]
+position = Vector2( 0, 768 )
+rotation = 1.57079
+is_visible = true
+is_enabled = true
+
+[node name="Block73" parent="Pivot/Content/Blocks" instance=ExtResource( 3 )]
+position = Vector2( 1664, 640 )
+rotation = 1.57079
+is_visible = true
+is_enabled = true
+
+[node name="Block59" parent="Pivot/Content/Blocks" instance=ExtResource( 3 )]
+position = Vector2( 0, 896 )
+rotation = 1.57079
+is_visible = true
+is_enabled = true
+
+[node name="Block75" parent="Pivot/Content/Blocks" instance=ExtResource( 3 )]
+position = Vector2( 1664, 768 )
+rotation = 1.57079
+is_visible = true
+is_enabled = true
+
+[node name="Block79" parent="Pivot/Content/Blocks" instance=ExtResource( 3 )]
+position = Vector2( 1664, 896 )
+rotation = 1.57079
 is_visible = true
 is_enabled = true
 
@@ -288,21 +450,21 @@ is_enabled = true
 
 [node name="FallingBlock" parent="Pivot/Content/Blocks" instance=ExtResource( 4 )]
 position = Vector2( 640, 256 )
-physics_material_override = SubResource( 2 )
+physics_material_override = SubResource( 1 )
 
 [node name="BouncyBlock" parent="Pivot/Content/Blocks" instance=ExtResource( 5 )]
 position = Vector2( 1088, 384 )
-physics_material_override = SubResource( 2 )
+physics_material_override = SubResource( 1 )
 is_visible = true
 is_enabled = true
 
 [node name="SpinningBlock" parent="Pivot/Content/Blocks" instance=ExtResource( 6 )]
 position = Vector2( 448, 256 )
-physics_material_override = SubResource( 2 )
+physics_material_override = SubResource( 1 )
 
 [node name="BlockSlidingHorizontal" parent="Pivot/Content/Blocks" instance=ExtResource( 7 )]
 position = Vector2( 323.761, 576 )
-physics_material_override = SubResource( 2 )
+physics_material_override = SubResource( 1 )
 
 [node name="Spikes4" parent="Pivot/Content/Blocks" instance=ExtResource( 8 )]
 position = Vector2( 190.411, 968.873 )
@@ -330,6 +492,7 @@ rotation = -0.785397
 position = Vector2( 832, 256 )
 
 [node name="Collectables" type="Node2D" parent="Pivot/Content"]
+editor/display_folded = true
 
 [node name="Collectable" parent="Pivot/Content/Collectables" instance=ExtResource( 10 )]
 position = Vector2( 320, 512 )
