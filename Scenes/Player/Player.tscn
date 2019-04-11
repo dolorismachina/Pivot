@@ -1,20 +1,18 @@
 [gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scenes/Player/Player.gd" type="Script" id=1]
-[ext_resource path="res://Scenes/Player/tw.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/Player/trace_07_rotated.png" type="Texture" id=2]
 [ext_resource path="res://Scenes/Player/Ball.png" type="Texture" id=3]
 [ext_resource path="res://Scenes/Player/Player.tres" type="Animation" id=4]
 [ext_resource path="res://Audio.gd" type="Script" id=5]
 [ext_resource path="res://Scenes/Camera2D.gd" type="Script" id=6]
 
 [sub_resource type="Curve" id=1]
-min_value = 0.1
-max_value = 0.5
-_data = [ Vector2( 0, 0.262822 ), 0.0, -0.710897, 0, 0, Vector2( 0.481429, 0.1 ), 0.0589134, 0.0, 0, 0 ]
+bake_resolution = 50
+_data = [ Vector2( 0, 1 ), 0.0, -0.903974, 0, 1, Vector2( 1, 0.0960256 ), -0.903974, 0.0, 1, 0 ]
 
-[sub_resource type="Gradient" id=5]
-offsets = PoolRealArray( 0, 0.474453 )
-colors = PoolColorArray( 0.929412, 0.984314, 0.0313726, 0.807843, 1, 1, 1, 0 )
+[sub_resource type="Gradient" id=2]
+colors = PoolColorArray( 0.329412, 0.788235, 1, 0.0313726, 0.329412, 0.788235, 1, 0.0117647 )
 
 [sub_resource type="CircleShape2D" id=3]
 radius = 12.4919
@@ -27,20 +25,23 @@ script = ExtResource( 1 )
 horizontal_damping = 0.975
 
 [node name="Particles2D" type="CPUParticles2D" parent="."]
+position = Vector2( -6.32085, -0.150314 )
 rotation = 3.14159
-amount = 60
-lifetime = 0.25
+amount = 50
+lifetime = 0.5
 fixed_fps = 60
 local_coords = false
 texture = ExtResource( 2 )
+flag_align_y = true
 spread = 0.0
-flatness = 1.0
 gravity = Vector2( 0, 0 )
-initial_velocity = 0.0
+initial_velocity = 0.01
+scale_amount = 0.15
 scale_amount_curve = SubResource( 1 )
-color_ramp = SubResource( 5 )
+color_ramp = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
+modulate = Color( 0.329412, 0.788235, 1, 0.807843 )
 texture = ExtResource( 3 )
 offset = Vector2( -0.1, -0.39 )
 
