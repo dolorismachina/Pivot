@@ -19,7 +19,6 @@ var last_block : Block
 
 func _physics_process(delta):
 	rotation = velocity.angle()
-	print(rotation)
 	var collision : KinematicCollision2D = move(delta)
 	
 	if collision:
@@ -139,3 +138,4 @@ func _on_Tween_tween_completed(object, key):
 
 func on_level_rotated(direction, angle):
 	velocity = velocity.rotated(deg2rad((angle / 1.5) * direction))
+

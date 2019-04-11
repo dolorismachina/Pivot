@@ -19,7 +19,6 @@ var current_level
 var level_id = 3
 
 func _ready():
-	print(randi())
 	change_level()
 	
 
