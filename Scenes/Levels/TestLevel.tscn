@@ -267,14 +267,8 @@ is_visible = true
 is_enabled = true
 
 [node name="Block4" parent="Pivot/Content/Blocks" instance=ExtResource( 3 )]
-position = Vector2( 448, 448 )
-rotation = -0.523598
-is_visible = true
-is_enabled = true
-
-[node name="Block5" parent="Pivot/Content/Blocks" instance=ExtResource( 3 )]
-position = Vector2( 256, 384 )
-rotation = 0.523598
+position = Vector2( 480, 448 )
+rotation = -0.785398
 is_visible = true
 is_enabled = true
 
@@ -294,7 +288,7 @@ is_visible = true
 is_enabled = true
 
 [node name="FallingBlock" parent="Pivot/Content/Blocks" instance=ExtResource( 4 )]
-position = Vector2( 640, 256 )
+position = Vector2( 640, 288 )
 physics_material_override = SubResource( 1 )
 
 [node name="BouncyBlock" parent="Pivot/Content/Blocks" instance=ExtResource( 5 )]
@@ -304,7 +298,7 @@ is_visible = true
 is_enabled = true
 
 [node name="SpinningBlock" parent="Pivot/Content/Blocks" instance=ExtResource( 6 )]
-position = Vector2( 448, 256 )
+position = Vector2( 448, 288 )
 physics_material_override = SubResource( 1 )
 
 [node name="BlockSlidingHorizontal" parent="Pivot/Content/Blocks" instance=ExtResource( 7 )]
@@ -324,7 +318,7 @@ position = Vector2( 704, 968.873 )
 position = Vector2( 960, 968.873 )
 
 [node name="Spikes8" parent="Pivot/Content/Blocks" instance=ExtResource( 8 )]
-position = Vector2( 961.105, 264.841 )
+position = Vector2( 961.105, 328.841 )
 
 [node name="Spikes9" parent="Pivot/Content/Blocks" instance=ExtResource( 8 )]
 position = Vector2( 1216, 392.841 )
@@ -334,10 +328,9 @@ position = Vector2( 1472, 320 )
 rotation = -0.785397
 
 [node name="BlockSlidingVertical" parent="Pivot/Content/Blocks" instance=ExtResource( 9 )]
-position = Vector2( 832, 256 )
+position = Vector2( 832, 288 )
 
 [node name="Collectables" type="Node2D" parent="Pivot/Content"]
-editor/display_folded = true
 
 [node name="Collectable" parent="Pivot/Content/Collectables" instance=ExtResource( 10 )]
 position = Vector2( 320, 512 )
@@ -358,10 +351,13 @@ position = Vector2( 320, 896 )
 position = Vector2( 64, 896 )
 
 [node name="Collectable2" parent="Pivot/Content/Collectables" instance=ExtResource( 10 )]
-position = Vector2( 256, 320 )
+position = Vector2( 448, 224 )
 
 [node name="Collectable3" parent="Pivot/Content/Collectables" instance=ExtResource( 10 )]
-position = Vector2( 640, 192 )
+position = Vector2( 640, 224 )
+
+[node name="Collectable6" parent="Pivot/Content/Collectables" instance=ExtResource( 10 )]
+position = Vector2( 1056, 224 )
 
 [node name="Collectable4" parent="Pivot/Content/Collectables" instance=ExtResource( 10 )]
 position = Vector2( 1216, 576 )
@@ -376,13 +372,10 @@ position = Vector2( 576, 704 )
 position = Vector2( 320, 704 )
 
 [node name="Collectable5" parent="Pivot/Content/Collectables" instance=ExtResource( 10 )]
-position = Vector2( 1472, 448 )
-
-[node name="Collectable6" parent="Pivot/Content/Collectables" instance=ExtResource( 10 )]
-position = Vector2( 1472, 448 )
+position = Vector2( 1472, 512 )
 
 [node name="Obstacles" type="Node2D" parent="Pivot/Content"]
 
 [node name="LevelController" parent="." instance=ExtResource( 11 )]
-rotation_angle = 30
+rotation_angle = 45
 
