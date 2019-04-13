@@ -5,15 +5,19 @@ class_name Pivot
 var score = 0
 var in_play = false
 
+var level_path = "res://Scenes/Levels/"
 var levels = [
-	preload("res://Scenes/Levels/Level1/Level1.tscn").instance(),
-	preload("res://Scenes/Levels/Level2/Level2.tscn").instance(),
-	preload("res://Scenes/Levels/Level3/Level3.tscn").instance(),
-	preload("res://Scenes/Levels/TestLevel.tscn").instance()
+	preload("res://Scenes/Levels/1.tscn").instance(),
+	preload("res://Scenes/Levels/2.tscn").instance(),
+	preload("res://Scenes/Levels/3.tscn").instance(),
+	preload("res://Scenes/Levels/4.tscn").instance(),
+	preload("res://Scenes/Levels/5.tscn").instance(),
+	preload("res://Scenes/Levels/6.tscn").instance(),
+	preload("res://Scenes/Levels/TestLevel.tscn").instance(),
 ]
 
 var current_level
-var level_id = 3
+var level_id = 0
 
 
 func _ready():
