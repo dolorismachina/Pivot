@@ -33,18 +33,14 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( -32, 0 ), Vector2( 0, 0 ), Vector2( 32, 0 ), Vector2( 0, 0 ) ]
 }
 
-[node name="BlockSlidingHorizontal" index="0" instance=ExtResource( 1 )]
+[node name="BlockSlidingHorizontal" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
-is_visible = true
-is_enabled = true
 
 [node name="Sprite" parent="." index="0"]
 editor/display_folded = false
-position = Vector2( 0, -18.1705 )
 
 [node name="CollisionShape2D" parent="." index="1"]
 visible = true
-position = Vector2( 0, -18.1705 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="5"]
 autoplay = "slide"
