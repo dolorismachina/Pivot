@@ -12,6 +12,8 @@ func _process(delta):
 
 
 func collect():
+	$AudioStreamPlayer.play()
+	
 	$TweenScale.interpolate_property($Sprite, 'scale', $Sprite.scale, 
 		Vector2(3, 3), 1, Tween.TRANS_CUBIC, Tween.EASE_OUT)
 	$TweenScale.start()
