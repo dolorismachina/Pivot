@@ -48,6 +48,7 @@ func reset_blocks():
 		
 		
 func start():
+	$LevelController.enable()
 	for block in $Pivot/Content/Blocks.get_children():
 		if not block is Block:
 			return
