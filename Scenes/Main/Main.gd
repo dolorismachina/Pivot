@@ -91,7 +91,7 @@ func change_level():
 	if old_level:
 		old_level.queue_free()
 		#stop_game()
-		
+	$Player.stop()
 	current_level = levels[level_id]
 	current_level.connect('rotated', $Player, 'on_level_rotated')
 	current_level = current_level

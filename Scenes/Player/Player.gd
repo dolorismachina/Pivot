@@ -97,12 +97,14 @@ func drop():
 
 func stop():
 	$CollisionShape2D.call_deferred("set_disabled", true)
+	$Area2D/CollisionShape2D.call_deferred("set_disabled", true)
 	gravity = Vector2(0, 0)
 	velocity = Vector2(0, 0)
 	
 	
 func enable():
 	$CollisionShape2D.disabled = false
+	$Area2D/CollisionShape2D.disabled = false
 	
 
 
