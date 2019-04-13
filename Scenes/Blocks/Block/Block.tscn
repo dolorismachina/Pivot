@@ -18,6 +18,8 @@ input_pickable = true
 physics_material_override = SubResource( 1 )
 script = ExtResource( 1 )
 colors = PoolColorArray( 0.94902, 0.282353, 0.439216, 1, 0.94902, 0.776471, 0.376471, 1, 0.027451, 0.94902, 0.701961, 1, 0.0941176, 0.733333, 0.94902, 1 )
+is_visible = true
+is_enabled = true
 
 [node name="Sprite" type="Sprite" parent="."]
 editor/display_folded = true

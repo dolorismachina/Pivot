@@ -294,8 +294,6 @@ physics_material_override = SubResource( 1 )
 [node name="BouncyBlock" parent="Pivot/Content/Blocks" instance=ExtResource( 5 )]
 position = Vector2( 1088, 384 )
 physics_material_override = SubResource( 1 )
-is_visible = true
-is_enabled = true
 
 [node name="SpinningBlock" parent="Pivot/Content/Blocks" instance=ExtResource( 6 )]
 position = Vector2( 448, 288 )
