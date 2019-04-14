@@ -19,3 +19,12 @@ func update_time(value):
 	else:
 		s = str(value.second)
 	$VBoxContainer/Time.text = str(value.minute) + ':' + s
+	
+
+func hide():
+	$VBoxContainer.visible = false
+	
+
+func show():
+	$VBoxContainer.visible = true	
+	

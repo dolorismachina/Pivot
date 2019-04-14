@@ -105,7 +105,10 @@ func _on_HUD_reset():
 
 
 func _on_Player_reached_end():
-	change_level()
+	#change_level()
+	$Overlay.show(score, duration)
+	$HUD.hide()
+	stop_game()
 	
 	
 func change_level():
@@ -123,7 +126,6 @@ func change_level():
 	if old_level:
 		old_level.queue_free()
 		stop_game()
-	$Player.stop()
 	current_level = levels[level_id]
 	current_level.connect('rotated', $Player, 'on_level_rotated')
 	current_level = current_level
@@ -153,3 +155,9 @@ func _on_Player_obstacle_touched():
 func _on_Player_collectable_collected(value):
 	score += value
 	$HUD.update_score(score)
+
+
+func _on_Overlay_next_button_pressed():
+	change_level()
+	$Overlay.hide()
+	$HUD.show()
