@@ -13,7 +13,6 @@ var levels = [
 	preload("res://Scenes/Levels/4.tscn").instance(),
 	preload("res://Scenes/Levels/5.tscn").instance(),
 	preload("res://Scenes/Levels/6.tscn").instance(),
-	preload("res://Scenes/Levels/TestLevel.tscn").instance(),
 ]
 
 var current_level
@@ -24,15 +23,17 @@ var start_time = 0
 var end_time = 0
 var duration = 0
 
+
 func _ready():
 	change_level()
-	start_time = OS.get_unix_time()
 	
 
 func _unhandled_input(event):
+	if in_play:
+		return
+		
 	if event is InputEventScreenTouch:
-		if $Player.velocity == Vector2(0, 0):
-			start_game()
+		start_game()
 		
 	if event.is_action_pressed("space"):
 		start_game()
@@ -116,7 +117,7 @@ func change_level():
 	check_time()
 	reset_score()
 	print('Main::change_level(): ')
-	if level_id == levels.size():
+	if is_final_level():
 		# TODO: Show final screen or something.
 		print('Max level')
 		return
@@ -138,6 +139,10 @@ func change_level():
 	$Player.connect('position_reached', current_level, 'on_player_reached_start')
 	
 
+func is_final_level():
+	return level_id == levels.size()
+	
+	
 func screen_position_to_world(screen_position : Vector2) -> Vector2:
 	var player_pos_on_screen = $Player.get_global_transform_with_canvas().origin
 		
