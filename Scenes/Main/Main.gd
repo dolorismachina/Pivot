@@ -20,8 +20,13 @@ var current_level
 var level_id = 0
 
 
+var start_time = 0
+var end_time = 0
+var duration = 0
+
 func _ready():
 	change_level()
+	start_time = OS.get_unix_time()
 	
 
 func _unhandled_input(event):
@@ -38,12 +43,16 @@ func _process(delta):
 		return
 		
 	move_level()
+	check_time()
 	
 
 func start_game():
 	$Player.drop()
 	in_play = true
 	current_level.start()
+	
+	# Start measuring time
+	start_time = OS.get_unix_time()
 	
 	
 func stop_game():
@@ -56,9 +65,17 @@ func move_level():
 	current_level.follow_player($Player)
 	
 
+func check_time():
+	end_time = OS.get_unix_time()
+	duration = OS.get_datetime_from_unix_time(end_time - start_time)
+	$HUD.update_time(duration)
+	
+	
 func restart():
+	in_play = false
 	reset_score()
 	reset_player()
+	reset_time()
 	current_level.reset()
 	
 	
@@ -71,6 +88,13 @@ func reset_player():
 func reset_score():
 	score = 0
 	$HUD.update_score(score)
+
+
+func reset_time():
+	start_time = OS.get_unix_time()
+	check_time()
+	$HUD.update_time(duration)
+	
 	
 func _on_TouchScreenButton_pressed():
 	restart()
@@ -85,8 +109,12 @@ func _on_Player_reached_end():
 	
 	
 func change_level():
+	reset_time()
+	check_time()
+	reset_score()
 	print('Main::change_level(): ')
 	if level_id == levels.size():
+		# TODO: Show final screen or something.
 		print('Max level')
 		return
 		
@@ -94,7 +122,7 @@ func change_level():
 	
 	if old_level:
 		old_level.queue_free()
-		#stop_game()
+		stop_game()
 	$Player.stop()
 	current_level = levels[level_id]
 	current_level.connect('rotated', $Player, 'on_level_rotated')
