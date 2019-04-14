@@ -2,10 +2,8 @@ extends Node2D
 class_name Pivot
 
 
-var score = 0
-var in_play = false
-
-var level_path = "res://Scenes/Levels/"
+var current_level
+var level_id = 2
 var levels = [
 	preload("res://Scenes/Levels/1.tscn").instance(),
 	preload("res://Scenes/Levels/2.tscn").instance(),
@@ -15,13 +13,11 @@ var levels = [
 	preload("res://Scenes/Levels/6.tscn").instance(),
 ]
 
-var current_level
-var level_id = 0
 
-
+var score = 0
+var in_play = false
 var start_time = 0
-var end_time = 0
-var duration = 0
+var duration = 0 # Time taken to beat a level
 
 
 func _ready():
@@ -67,7 +63,7 @@ func move_level():
 	
 
 func check_time():
-	end_time = OS.get_unix_time()
+	var end_time = OS.get_unix_time()
 	duration = OS.get_datetime_from_unix_time(end_time - start_time)
 	$HUD.update_time(duration)
 	
@@ -129,12 +125,10 @@ func change_level():
 		stop_game()
 	current_level = levels[level_id]
 	current_level.connect('rotated', $Player, 'on_level_rotated')
-	current_level = current_level
 	add_child(current_level, true)
-	$Player.position = $Level/Pivot/Content/Start.position
+	$Player.position = screen_position_to_world(Vector2())
 	level_id += 1
-	current_level.position = screen_position_to_world(Vector2(0, 0))
-	#$Player.position = current_level.position + current_level.get_start_position()
+	current_level.position = screen_position_to_world(Vector2(-200, 200))
 	$Player.tween_to(current_level.position + current_level.get_start_position())
 	$Player.connect('position_reached', current_level, 'on_player_reached_start')
 	
@@ -147,10 +141,6 @@ func screen_position_to_world(screen_position : Vector2) -> Vector2:
 	var player_pos_on_screen = $Player.get_global_transform_with_canvas().origin
 		
 	return ($Player.position - player_pos_on_screen) + screen_position
-
-
-func _on_Player_contact(block):
-	current_level.set_current_block(block)
 
 
 func _on_Player_obstacle_touched():

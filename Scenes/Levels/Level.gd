@@ -69,3 +69,4 @@ func disable_collision():
 	
 	for b in blocks:
 		b.disable_collision()
+		
