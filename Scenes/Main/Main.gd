@@ -112,6 +112,8 @@ func change_level():
 	reset_time()
 	check_time()
 	reset_score()
+	$Player.stop()
+	$Player.focus_camera(true)
 	print('Main::change_level(): ')
 	if is_final_level():
 		# TODO: Show final screen or something.

@@ -8,6 +8,9 @@ signal obstacle_touched
 signal collectable_collected(value)
 
 
+enum State {ACTIVE, INACTIVE, SLOWING_DOWN, FLYING_AWAY}
+var current_state = State.INACTIVE
+
 export (int) var bounce_limit = 500
 export (float) var horizontal_damping = 0.985
 
@@ -106,7 +109,10 @@ func enable():
 	$CollisionShape2D.disabled = false
 	$Area2D/CollisionShape2D.disabled = false
 	
-
+	
+func focus_camera(focus):
+	$Camera2D.current = focus
+	
 
 func _on_Area2D_area_entered(area):
 	if area.is_in_group('collectables'):
@@ -126,10 +132,19 @@ func _on_Area2D_area_entered(area):
 		return
 		
 	if area.name == 'End':
+		slow_down()
 		emit_signal("reached_end")
 		return
 		
 
+# Gradually lowers player's speed to zero
+func slow_down():
+	current_state = State.SLOWING_DOWN
+	$Tween.interpolate_property(self, 'velocity', velocity, Vector2(), 0.5, 
+		Tween.TRANS_CUBIC, Tween.EASE_OUT)
+	$Tween.start()
+		
+	
 func tween_to(new_position : Vector2) -> void:
 	$Tween.interpolate_property(self, 'position', position, new_position, 4,
 		Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
@@ -138,9 +153,22 @@ func tween_to(new_position : Vector2) -> void:
 	$CollisionShape2D.disabled = true
 
 
+func fly_away():
+	$Tween.interpolate_property(self, 'velocity', Vector2(0, 0), 
+		Vector2(0, -1500), 1, Tween.TRANS_CUBIC, Tween.EASE_IN, 0.5)
+	$Tween.start()
+	
+	current_state = State.FLYING_AWAY
+	focus_camera(false)
+			
+			
 func _on_Tween_tween_completed(object, key):
-	pass#	emit_signal("position_reached")
-
+	if not key == ':velocity':
+		return
+		
+	if current_state == State.SLOWING_DOWN:
+		fly_away()
+			
 
 func on_level_rotated(direction, angle):
 	velocity = velocity.rotated(deg2rad((angle / 1.5) * direction))
