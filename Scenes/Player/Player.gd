@@ -116,10 +116,7 @@ func focus_camera(focus):
 
 func _on_Area2D_area_entered(area):
 	if area.is_in_group('collectables'):
-		print('Got a collectable!')
-		area.collect()
-		emit_signal("collectable_collected", area.value)
-		
+		pick_collectable(area)
 		return 
 		
 	if area.is_in_group('enemies'):
@@ -136,6 +133,12 @@ func _on_Area2D_area_entered(area):
 		emit_signal("reached_end")
 		return
 		
+
+func pick_collectable(area):
+	print('Got a collectable!')
+	area.collect()
+	emit_signal("collectable_collected", area.value)
+	
 
 # Gradually lowers player's speed to zero
 func slow_down():
