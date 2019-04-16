@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scenes/Blocks/Block/Block.gd" type="Script" id=1]
-[ext_resource path="res://Scenes/Blocks/Block/block.png" type="Texture" id=2]
-[ext_resource path="res://Scenes/Blocks/BlockOverlay.png" type="Texture" id=3]
+[ext_resource path="res://Scenes/Sprinkles/Sprinkles.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Blocks/Block/block.png" type="Texture" id=3]
+[ext_resource path="res://Scenes/Blocks/BlockOverlay.png" type="Texture" id=4]
 
 [sub_resource type="PhysicsMaterial" id=1]
 friction = 0.0
@@ -20,17 +21,18 @@ script = ExtResource( 1 )
 colors = PoolColorArray( 0.94902, 0.282353, 0.439216, 1, 0.94902, 0.776471, 0.376471, 1, 0.027451, 0.94902, 0.701961, 1, 0.0941176, 0.733333, 0.94902, 1 )
 is_visible = true
 is_enabled = true
+sprinkles = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 editor/display_folded = true
 material = SubResource( 2 )
 rotation = 0.00028198
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 
 [node name="BlockOverlay" type="Sprite" parent="Sprite"]
 visible = false
 self_modulate = Color( 1, 1, 1, 0.768627 )
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false

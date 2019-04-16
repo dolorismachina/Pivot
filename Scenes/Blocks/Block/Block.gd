@@ -14,6 +14,7 @@ var previous_block : Block
 
 export (bool) var is_visible = false
 export (bool) var is_enabled = false
+export (PackedScene) var sprinkles
 
 var block_color = Color()
 
@@ -58,6 +59,9 @@ func contact():
 	glow()
 	$ColliderTimer.start()
 	$CollisionShape2D.disabled = true
+	
+	var particles = sprinkles.instance()
+	add_child(particles)
 	
 
 func show():
