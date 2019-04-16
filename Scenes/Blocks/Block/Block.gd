@@ -1,5 +1,4 @@
 extends StaticBody2D
-
 class_name Block
 
 
@@ -25,15 +24,15 @@ func get_next():
 
 func _ready():
 	set_random_color()
-	
+
 	if not is_visible:
 		$Sprite.modulate.a = 0
-	
+
 	if previous_block_path:
 		previous_block = get_node(previous_block_path)
 	if next_block_path:
 		next_block = get_node(next_block_path)
-	
+
 	if is_enabled:
 		enable()
 	else:
@@ -45,8 +44,8 @@ func set_random_color():
 	var random_number = floor(rand_range(0, colors.size() - 1))
 	$Sprite.modulate = colors[random_number]
 	block_color = colors[random_number]
-	
-	
+
+
 func glow():
 	$Sprite.modulate += Color(0.2, 0.2, 0.2, 0) #$Sprite.modulate / 10
 
@@ -67,7 +66,7 @@ func spawn_particles():
 	var particles = sprinkles.instance()
 	particles.position.y += 15
 	add_child(particles)
-	
+
 
 func show():
 	$Sprite.visible = true
@@ -78,25 +77,32 @@ func enable():
 	$CollisionShape2D.disabled = false
 	is_enabled = true
 
+
 func disable():
 	disable_collision()
 	$Sprite.modulate.a = 0
 	is_enabled = false
 
+
 func disable_collision():
 	$CollisionShape2D.disabled = true
-	
+
 
 func _on_ColliderTimer_timeout():
 	if is_enabled:
 		$CollisionShape2D.disabled = false
 
 
+# Virtual method used by child nodes.
 func activate():
 	pass
-	
-func deactivate():
-	pass		
 
+
+# Virtual method used by child nodes.
+func deactivate():
+	pass
+
+
+# Virtual method used by child nodes.
 func reset():
 	pass
