@@ -48,11 +48,11 @@ func set_random_color():
 	
 	
 func glow():
-	$Sprite.modulate += $Sprite.modulate / 2
-	
-	$GlowTween.interpolate_property($Sprite, 'modulate', $GlowTween.modulate, 
+	$Sprite.modulate += Color(0.2, 0.2, 0.2, 0) #$Sprite.modulate / 10
+
+	$GlowTween.interpolate_property($Sprite, 'modulate', $GlowTween.modulate,
 		block_color, 0.75, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
-	$GlowTween.start()  
+	$GlowTween.start()
 
 
 func contact():
