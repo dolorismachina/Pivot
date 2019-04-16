@@ -59,8 +59,13 @@ func contact():
 	glow()
 	$ColliderTimer.start()
 	$CollisionShape2D.disabled = true
-	
+
+	spawn_particles()
+
+
+func spawn_particles():
 	var particles = sprinkles.instance()
+	particles.position.y += 15
 	add_child(particles)
 	
 
