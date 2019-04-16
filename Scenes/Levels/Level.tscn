@@ -26,7 +26,8 @@ input_pickable = false
 [node name="Obstacles" type="Node2D" parent="Pivot/Content"]
 
 [node name="LevelController" parent="." instance=ExtResource( 3 )]
-rotation_angle = 30
+rotation_angle = 20
+max_rotation = 60
 
 [node name="MobileController" parent="." instance=ExtResource( 4 )]
 
