@@ -13,7 +13,7 @@ var previous_block : Block
 
 export (bool) var is_visible = false
 export (bool) var is_enabled = false
-export (PackedScene) var sprinkles
+var sprinkles = preload("res://Scenes/Sprinkles/Sprinkles.tscn")
 
 var block_color = Color()
 
