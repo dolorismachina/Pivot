@@ -69,3 +69,8 @@ func enable():
 	set_process_input(true)
 	is_enabled = true
 	
+	
+func disable():
+	set_process_input(false)
+	is_enabled = false
+	

@@ -27,6 +27,7 @@ func reset():
 	
 	reset_blocks()
 	reset_collectables()
+	$LevelController.disable()
 
 
 func reset_collectables():
@@ -49,6 +50,7 @@ func reset_blocks():
 		
 func start():
 	$LevelController.enable()
+	
 	for block in $Pivot/Content/Blocks.get_children():
 		if not block is Block:
 			return
