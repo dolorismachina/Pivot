@@ -6,7 +6,7 @@ signal reached_end
 signal position_reached
 signal obstacle_touched
 signal collectable_collected(value)
-
+signal fell_off
 
 enum State {ACTIVE, INACTIVE, SLOWING_DOWN, FLYING_AWAY}
 var current_state = State.INACTIVE
@@ -42,6 +42,8 @@ func move(delta) -> KinematicCollision2D:
 	
 	
 func collide(collision : KinematicCollision2D) -> void:
+	$RespawnTimer.start(0)
+	
 	var block : Block = collision.collider as Block
 	
 	if next_block == null: # First block in the level
@@ -129,6 +131,7 @@ func _on_Area2D_area_entered(area):
 		return
 		
 	if area.name == 'End':
+		$RespawnTimer.stop()
 		slow_down()
 		emit_signal("reached_end")
 		return
@@ -175,3 +178,7 @@ func _on_Tween_tween_completed(object, key):
 
 func on_level_rotated(direction, angle):
 	velocity = velocity.rotated(deg2rad((angle / 1.5) * direction))
+
+
+func _on_RespawnTimer_timeout():
+	emit_signal("fell_off")
