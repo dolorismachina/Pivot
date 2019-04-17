@@ -2,11 +2,12 @@
 
 [ext_resource path="res://Scenes/Sprinkles/Sprinkles.gd" type="Script" id=1]
 
-[sub_resource type="Gradient" id=1]
-colors = PoolColorArray( 1, 1, 1, 0.329412, 1, 1, 1, 0 )
+[sub_resource type="Gradient" id=8]
+offsets = PoolRealArray( 0, 0.619938 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 1 )
 
-[sub_resource type="GradientTexture" id=2]
-gradient = SubResource( 1 )
+[sub_resource type="GradientTexture" id=9]
+gradient = SubResource( 8 )
 
 [sub_resource type="Curve" id=3]
 min_value = -1.0
@@ -16,29 +17,33 @@ _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
 curve = SubResource( 3 )
 
 [sub_resource type="Curve" id=5]
-max_value = 5.0
-_data = [ Vector2( 0, 5 ), 0.0, -4.0, 0, 1, Vector2( 1, 1 ), -4.0, 0.0, 1, 0 ]
+max_value = 4.0
+_data = [ Vector2( 0, 3.55744 ), 0.0, -5.43591, 0, 1, Vector2( 0.5952, 0.321984 ), 0.0, 0.0, 0, 0, Vector2( 0.6792, 1.04544 ), 7.65562, 7.65562, 0, 0, Vector2( 0.7968, 0.670314 ), 0.0, 0.0, 0, 0, Vector2( 0.8892, 1.04544 ), 0.0, 0.0, 0, 0, Vector2( 0.9956, 0.750698 ), -2.77013, 0.0, 1, 0 ]
 
 [sub_resource type="CurveTexture" id=6]
 curve = SubResource( 5 )
 
 [sub_resource type="ParticlesMaterial" id=7]
+resource_local_to_scene = true
 emission_shape = 2
-emission_box_extents = Vector3( 0, 10, 20 )
+emission_box_extents = Vector3( 0, 25, 20 )
 flag_disable_z = true
-spread = 0.0
-gravity = Vector3( 0, 40, 0 )
-initial_velocity = 200.0
+spread = 70.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 40.0
 angular_velocity = 180.0
 angular_velocity_random = 1.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
-damping = 72.47
-damping_random = 1.0
+radial_accel = 32.58
+radial_accel_random = 1.0
+damping = 39.33
+damping_random = 0.9
 angle_random = 1.0
+scale = 0.7
 scale_random = 1.0
 scale_curve = SubResource( 6 )
-color_ramp = SubResource( 2 )
+color_ramp = SubResource( 9 )
 hue_variation_curve = SubResource( 4 )
 
 [node name="Sprinkles" type="Node2D"]
@@ -49,11 +54,9 @@ modulate = Color( 2, 2, 2, 1 )
 position = Vector2( -50, 0 )
 rotation = 1.5708
 z_index = -12
-emitting = false
-amount = 3
-lifetime = 0.5
-one_shot = true
-explosiveness = 0.7
+amount = 2
+lifetime = 2.0
+explosiveness = 0.9
 randomness = 1.0
 process_material = SubResource( 7 )
 
@@ -62,11 +65,9 @@ modulate = Color( 2, 2, 2, 1 )
 position = Vector2( -25, 0 )
 rotation = 1.5708
 z_index = -12
-emitting = false
-amount = 3
-lifetime = 0.5
-one_shot = true
-explosiveness = 0.7
+amount = 2
+lifetime = 2.0
+explosiveness = 0.9
 randomness = 1.0
 process_material = SubResource( 7 )
 
@@ -75,11 +76,11 @@ modulate = Color( 2, 2, 2, 1 )
 rotation = 1.5708
 z_index = -12
 emitting = false
-amount = 3
-lifetime = 0.5
+amount = 30
+lifetime = 2.0
 one_shot = true
-explosiveness = 0.7
-randomness = 1.0
+explosiveness = 0.95
+randomness = 0.43
 process_material = SubResource( 7 )
 
 [node name="Particles2D3" type="Particles2D" parent="."]
@@ -87,11 +88,9 @@ modulate = Color( 2, 2, 2, 1 )
 position = Vector2( 25, 0 )
 rotation = 1.5708
 z_index = -12
-emitting = false
-amount = 3
-lifetime = 0.5
-one_shot = true
-explosiveness = 0.7
+amount = 2
+lifetime = 2.0
+explosiveness = 0.9
 randomness = 1.0
 process_material = SubResource( 7 )
 
@@ -100,11 +99,9 @@ modulate = Color( 2, 2, 2, 1 )
 position = Vector2( 50, 0 )
 rotation = 1.5708
 z_index = -12
-emitting = false
-amount = 3
-lifetime = 0.5
-one_shot = true
-explosiveness = 0.7
+amount = 2
+lifetime = 2.0
+explosiveness = 0.9
 randomness = 1.0
 process_material = SubResource( 7 )
 

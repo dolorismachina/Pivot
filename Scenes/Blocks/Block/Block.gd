@@ -65,6 +65,7 @@ func contact():
 func spawn_particles():
 	var particles = sprinkles.instance()
 	particles.position.y += 15
+	particles.set_color(block_color)
 	add_child(particles)
 
 
