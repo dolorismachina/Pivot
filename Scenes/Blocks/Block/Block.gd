@@ -56,6 +56,7 @@ func glow():
 
 func contact():
 	glow()
+	$AnimationPlayer.play("bounce")
 	$ColliderTimer.start()
 	$CollisionShape2D.disabled = true
 
