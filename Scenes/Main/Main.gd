@@ -158,3 +158,7 @@ func _on_Overlay_next_button_pressed():
 	change_level()
 	$Overlay.hide()
 	$HUD.show()
+
+
+func _on_Player_fell_off():
+	restart()
