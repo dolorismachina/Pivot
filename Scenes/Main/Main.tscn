@@ -28,6 +28,7 @@ layer = 10
 
 [connection signal="collectable_collected" from="Player" to="." method="_on_Player_collectable_collected"]
 [connection signal="fell_off" from="Player" to="." method="_on_Player_fell_off"]
+[connection signal="is_waiting" from="Player" to="." method="_on_Player_is_waiting"]
 [connection signal="obstacle_touched" from="Player" to="." method="_on_Player_obstacle_touched"]
 [connection signal="reached_end" from="Player" to="." method="_on_Player_reached_end"]
 [connection signal="reset" from="HUD" to="." method="_on_HUD_reset"]

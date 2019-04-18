@@ -7,6 +7,7 @@ signal position_reached
 signal obstacle_touched
 signal collectable_collected(value)
 signal fell_off
+signal is_waiting
 
 
 enum State {ACTIVE, WAITING, SLOWING_DOWN, FLYING_AWAY, FLYING_TO_START}
@@ -186,6 +187,7 @@ func change_state(new_state):
 		State.WAITING:
 			focus_camera(true)
 			current_state = State.WAITING
+			emit_signal("is_waiting")
 		
 		State.ACTIVE:
 			pass

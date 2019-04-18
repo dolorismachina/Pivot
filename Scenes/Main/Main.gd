@@ -18,14 +18,14 @@ var score = 0
 var in_play = false
 var start_time = 0
 var duration = 0 # Time taken to beat a level
-
+var player_ready = false
 
 func _ready():
 	change_level()
 	
 
 func _unhandled_input(event):
-	if in_play:
+	if in_play or not player_ready:
 		return
 		
 	if event is InputEventScreenTouch:
@@ -70,6 +70,7 @@ func check_time():
 	
 func restart():
 	in_play = false
+	player_ready = true
 	reset_score()
 	reset_player()
 	reset_time()
@@ -114,6 +115,7 @@ func change_level():
 	reset_score()
 	$Player.stop()
 	$Player.focus_camera(true)
+	player_ready = false
 	print('Main::change_level(): ')
 	if is_final_level():
 		# TODO: Show final screen or something.
@@ -163,3 +165,7 @@ func _on_Overlay_next_button_pressed():
 
 func _on_Player_fell_off():
 	restart()
+
+
+func _on_Player_is_waiting():
+	player_ready = true
