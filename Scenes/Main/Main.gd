@@ -3,7 +3,7 @@ class_name Pivot
 
 
 var current_level
-var level_id = 2
+export (int) var level_id = 0
 var levels = [
 	preload("res://Scenes/Levels/1.tscn").instance(),
 	preload("res://Scenes/Levels/2.tscn").instance(),
