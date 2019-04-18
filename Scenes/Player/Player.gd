@@ -8,8 +8,9 @@ signal obstacle_touched
 signal collectable_collected(value)
 signal fell_off
 
-enum State {ACTIVE, INACTIVE, SLOWING_DOWN, FLYING_AWAY}
-var current_state = State.INACTIVE
+
+enum State {ACTIVE, WAITING, SLOWING_DOWN, FLYING_AWAY, FLYING_TO_START}
+var current_state = State.WAITING
 
 export (int) var bounce_limit = 500
 export (float) var horizontal_damping = 0.985
@@ -21,6 +22,13 @@ var next_block : Block
 var last_block : Block
 
 
+func _process(delta):
+	print($Camera2D.smoothing_speed)
+	if current_state == State.WAITING or current_state == State.ACTIVE:
+		if $Camera2D.smoothing_speed < 10:
+			$Camera2D.smoothing_speed += 2.5 * delta
+		
+		
 func _physics_process(delta):
 	rotation = velocity.angle()
 	var collision : KinematicCollision2D = move(delta)
@@ -96,8 +104,9 @@ func check_block(block : Block) -> bool:
 		
 
 func drop():
-	gravity = initial_gravity
-	enable()
+	if current_state == State.WAITING:
+		gravity = initial_gravity
+		enable()
 
 
 func stop():
@@ -110,6 +119,8 @@ func stop():
 func enable():
 	$CollisionShape2D.disabled = false
 	$Area2D/CollisionShape2D.disabled = false
+	
+	change_state(State.ACTIVE)
 	
 	
 func focus_camera(focus):
@@ -145,13 +156,16 @@ func pick_collectable(area):
 
 # Gradually lowers player's speed to zero
 func slow_down():
-	current_state = State.SLOWING_DOWN
+	change_state(State.SLOWING_DOWN)
+	
 	$Tween.interpolate_property(self, 'velocity', velocity, Vector2(), 0.5, 
 		Tween.TRANS_CUBIC, Tween.EASE_OUT)
 	$Tween.start()
 		
 	
 func tween_to(new_position : Vector2) -> void:
+	change_state(State.FLYING_TO_START)
+	
 	$Tween.interpolate_property(self, 'position', position, new_position, 4,
 		Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
 		
@@ -164,13 +178,31 @@ func fly_away():
 		Vector2(0, -1500), 1, Tween.TRANS_CUBIC, Tween.EASE_IN, 0.5)
 	$Tween.start()
 	
-	current_state = State.FLYING_AWAY
-	focus_camera(false)
+	change_state(State.FLYING_AWAY)
+
+
+func change_state(new_state):
+	match new_state:
+		State.WAITING:
+			focus_camera(true)
+			current_state = State.WAITING
+		
+		State.ACTIVE:
+			pass
+			
+		State.SLOWING_DOWN:
+			pass
+		
+		State.FLYING_AWAY:
+			focus_camera(false)
+		
+		State.FLYING_TO_START:
+			current_state = State.FLYING_TO_START		
 			
 			
 func _on_Tween_tween_completed(object, key):
-	if not key == ':velocity':
-		return
+	if current_state == State.FLYING_TO_START:
+		change_state(State.WAITING)
 		
 	if current_state == State.SLOWING_DOWN:
 		fly_away()

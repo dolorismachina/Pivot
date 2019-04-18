@@ -130,7 +130,8 @@ func change_level():
 	add_child(current_level, true)
 	$Player.position = screen_position_to_world(Vector2())
 	level_id += 1
-	current_level.position = screen_position_to_world(Vector2(-200, 200))
+	current_level.position = screen_position_to_world(Vector2(100, 640))
+	$Player.focus_camera(false)
 	$Player.tween_to(current_level.position + current_level.get_start_position())
 	$Player.connect('position_reached', current_level, 'on_player_reached_start')
 	
