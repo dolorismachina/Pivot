@@ -23,13 +23,6 @@ var next_block : Block
 var last_block : Block
 
 
-func _process(delta):
-	print($Camera2D.smoothing_speed)
-	if current_state == State.WAITING or current_state == State.ACTIVE:
-		if $Camera2D.smoothing_speed < 10:
-			$Camera2D.smoothing_speed += 2.5 * delta
-		
-		
 func _physics_process(delta):
 	rotation = velocity.angle()
 	var collision : KinematicCollision2D = move(delta)
@@ -116,6 +109,10 @@ func stop():
 	gravity = Vector2(0, 0)
 	velocity = Vector2(0, 0)
 	
+
+func reset():
+	change_state(State.WAITING)
+	
 	
 func enable():
 	$CollisionShape2D.disabled = false
@@ -143,6 +140,7 @@ func _on_Area2D_area_entered(area):
 		return
 		
 	if area.name == 'End':
+		change_state(State.SLOWING_DOWN)
 		$RespawnTimer.stop()
 		slow_down()
 		emit_signal("reached_end")
@@ -190,12 +188,13 @@ func change_state(new_state):
 			emit_signal("is_waiting")
 		
 		State.ACTIVE:
-			pass
+			current_state = State.ACTIVE
 			
 		State.SLOWING_DOWN:
-			pass
+			current_state = State.SLOWING_DOWN
 		
 		State.FLYING_AWAY:
+			current_state = State.FLYING_AWAY
 			focus_camera(false)
 		
 		State.FLYING_TO_START:

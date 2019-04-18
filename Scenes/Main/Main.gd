@@ -81,6 +81,7 @@ func reset_player():
 	var player : Player = ($Player as Player)
 	player.position = current_level.position + current_level.get_start_position()
 	player.stop()
+	player.reset()
 	
 
 func reset_score():
