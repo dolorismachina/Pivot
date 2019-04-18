@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Scenes/Blocks/BlockSlidingHorizontal/BlockSlidingHorizontal.gd" type="Script" id=1]
-[ext_resource path="res://Scenes/Blocks/Block/block.png" type="Texture" id=2]
-[ext_resource path="res://Scenes/Blocks/BlockOverlay.png" type="Texture" id=3]
+[ext_resource path="res://Scenes/Blocks/Block/Block.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Blocks/BlockSlidingHorizontal/BlockSlidingHorizontal.gd" type="Script" id=2]
 
 [sub_resource type="PhysicsMaterial" id=5]
 friction = 0.0
@@ -42,36 +41,19 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, -32 ), Vector2( 0, 0 ), Vector2( 0, 32 ), Vector2( 0, 0 ) ]
 }
 
-[node name="BlockSlidingVertical" type="StaticBody2D"]
-input_pickable = true
+[node name="BlockSlidingVertical" instance=ExtResource( 1 )]
 physics_material_override = SubResource( 5 )
-script = ExtResource( 1 )
-colors = PoolColorArray( 0.94902, 0.282353, 0.439216, 1, 0.94902, 0.776471, 0.376471, 1, 0.027451, 0.94902, 0.701961, 1, 0.0941176, 0.733333, 0.94902, 1 )
-is_visible = true
-is_enabled = true
+script = ExtResource( 2 )
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Sprite" parent="." index="0"]
 material = SubResource( 2 )
-rotation = 0.00028198
-texture = ExtResource( 2 )
+position = Vector2( 0, 0 )
 
-[node name="BlockOverlay" type="Sprite" parent="Sprite"]
-visible = false
-self_modulate = Color( 1, 1, 1, 0.768627 )
-texture = ExtResource( 3 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" parent="." index="1"]
+visible = true
 shape = SubResource( 3 )
 
-[node name="GlowTween" type="Tween" parent="."]
-
-[node name="Tween" type="Tween" parent="."]
-
-[node name="ColliderTimer" type="Timer" parent="."]
-wait_time = 0.2
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" parent="." index="5"]
 autoplay = "slide"
 anims/slide = SubResource( 4 )
 
-[connection signal="timeout" from="ColliderTimer" to="." method="_on_ColliderTimer_timeout"]
