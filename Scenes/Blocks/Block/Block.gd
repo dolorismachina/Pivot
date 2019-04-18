@@ -18,6 +18,9 @@ var sprinkles = preload("res://Scenes/Sprinkles/Sprinkles.tscn")
 var block_color = Color()
 
 
+var is_shaking = false
+
+
 func get_next():
 	return get_node(next_block_path)
 
@@ -39,6 +42,15 @@ func _ready():
 		disable()
 
 
+func _process(delta):
+	if is_shaking:
+		shake()
+		
+
+func shake():
+	$Sprite.offset = Vector2(rand_range(-2, 2), rand_range(-2, 2))
+		
+		
 func set_random_color():
 	randomize()
 	var random_number = floor(rand_range(0, colors.size() - 1))
@@ -56,6 +68,8 @@ func glow():
 
 func contact():
 	glow()
+	is_shaking = true
+	$TimerShake.start(0)
 	$AnimationPlayer.play("bounce")
 	$ColliderTimer.start()
 	$CollisionShape2D.disabled = true
@@ -108,3 +122,11 @@ func deactivate():
 # Virtual method used by child nodes.
 func reset():
 	pass
+
+
+func _on_TimerShake_timeout():
+	is_shaking = false
+
+
+func _on_AnimationPlayer_animation_started(anim_name):
+	print(anim_name)
