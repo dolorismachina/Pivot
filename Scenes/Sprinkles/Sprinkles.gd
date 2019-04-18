@@ -1,7 +1,7 @@
 extends Node2D
 
 
-var alpha_start = 0.15
+var alpha_start = 0.1
 var alpha_end = 0.0
 
 
