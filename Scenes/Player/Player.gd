@@ -198,6 +198,9 @@ func change_state(new_state):
 			focus_camera(false)
 		
 		State.FLYING_TO_START:
+			$Camera2D.current = true
+			$Camera2D.smoothing_speed = 0
+			$Tween.interpolate_property($Camera2D, 'smoothing_speed', 0, 10, 10,Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
 			current_state = State.FLYING_TO_START		
 			
 			
