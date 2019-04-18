@@ -1,15 +1,17 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scenes/Levels/Level.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/End/End.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/LevelController/LevelController.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/MobileController/MobileController.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Controllers/MouseController/MouseController.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Levels/LevelRotate.wav" type="AudioStream" id=6]
 
 [node name="Level" type="Node2D"]
 script = ExtResource( 1 )
 
 [node name="Pivot" type="Node2D" parent="."]
+editor/display_folded = true
 
 [node name="Content" type="Node2D" parent="Pivot"]
 
@@ -33,4 +35,8 @@ max_rotation = 60
 
 [node name="MouseController" parent="." instance=ExtResource( 5 )]
 enabled = false
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -32.0
 

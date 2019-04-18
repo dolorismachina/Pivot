@@ -8,7 +8,7 @@ var is_enabled = false
 
 var is_rotating = false
 export (int) var rotation_angle = 45
-var tween_speed = 0.15
+var tween_speed = 0.25
 export (int) var max_rotation = 90
 
 var transition_type = Tween.TRANS_QUAD
@@ -39,6 +39,8 @@ func _input(event):
 	
 
 func rotate_level(direction):
+	get_parent().get_node("AudioStreamPlayer").play()
+	
 	is_rotating = true
 	
 	$Tween.interpolate_property(pivot, 'rotation', 
