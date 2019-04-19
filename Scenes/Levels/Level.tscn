@@ -29,7 +29,7 @@ input_pickable = false
 
 [node name="LevelController" parent="." instance=ExtResource( 3 )]
 rotation_angle = 20
-max_rotation = 60
+max_rotation = 40
 
 [node name="MobileController" parent="." instance=ExtResource( 4 )]
 
