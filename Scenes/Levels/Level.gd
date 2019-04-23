@@ -57,7 +57,11 @@ func start():
 			
 		(block as Block).activate()
 	
+
+func stop():
+	$LevelController.disable()
 	
+		
 func get_start_position() -> Vector2:
 	return $Pivot/Content/Start.position
 	
