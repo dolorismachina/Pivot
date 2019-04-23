@@ -20,6 +20,7 @@ var start_time = 0
 var duration = 0 # Time taken to beat a level
 var player_ready = false
 
+
 func _ready():
 	change_level()
 	
@@ -96,35 +97,50 @@ func reset_time():
 	$HUD.update_time(duration)
 	
 
-func change_level():
+func initialize():
 	reset_time()
-	check_time()
 	reset_score()
-	$Player.stop()
-	$Player.focus_camera(true)
 	player_ready = false
-	print('Main::change_level(): ')
+	$Player.stop()
+	
+	
+func change_level():
 	if is_final_level():
 		# TODO: Show final screen or something.
 		print('Max level')
 		return
 		
-	var old_level = current_level
+	initialize()
 	
-	if old_level:
-		old_level.queue_free()
-		stop_game()
-	current_level = levels[next_level_id]
-	current_level.connect('rotated', $Player, 'on_level_rotated')
-	add_child(current_level, true)
-	$Player.position = screen_position_to_world(Vector2())
+	if current_level:
+		swap_level_out()
+		
+	setup_next_level()
+	
+	prepare_player_for_new_level()
+	
 	next_level_id += 1
-	current_level.position = screen_position_to_world(Vector2(100, 640))
+
+
+func prepare_player_for_new_level():
+	$Player.position = screen_position_to_world(Vector2())
 	$Player.focus_camera(false)
 	$Player.tween_to(current_level.position + current_level.get_start_position())
 	$Player.connect('position_reached', current_level, 'on_player_reached_start')
 	
+	
+func setup_next_level():
+	current_level = levels[next_level_id]
+	current_level.connect('rotated', $Player, 'on_level_rotated')
+	current_level.position = screen_position_to_world(Vector2(100, 640))
+	add_child(current_level, true)
+		
 
+func swap_level_out():
+	var old_level = current_level
+	old_level.queue_free()
+	
+	
 func is_final_level():
 	return next_level_id == levels.size()
 	
