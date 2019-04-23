@@ -95,22 +95,7 @@ func reset_time():
 	check_time()
 	$HUD.update_time(duration)
 	
-	
-func _on_TouchScreenButton_pressed():
-	restart()
 
-
-func _on_HUD_reset():
-	restart()
-
-
-func _on_Player_reached_end():
-	#change_level()
-	$Overlay.show(score, duration)
-	$HUD.hide()
-	stop_game()
-	
-	
 func change_level():
 	reset_time()
 	check_time()
@@ -171,3 +156,18 @@ func _on_Player_fell_off():
 
 func _on_Player_is_waiting():
 	player_ready = true
+
+
+func _on_TouchScreenButton_pressed():
+	restart()
+
+
+func _on_HUD_reset():
+	restart()
+
+
+func _on_Player_reached_end():
+	#change_level()
+	$Overlay.show(score, duration)
+	$HUD.hide()
+	stop_game()
