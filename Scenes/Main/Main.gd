@@ -3,7 +3,7 @@ class_name Pivot
 
 
 var current_level
-export (int) var level_id = 0
+export (int) var next_level_id = 0
 var levels = [
 	preload("res://Scenes/Levels/1.tscn").instance(),
 	preload("res://Scenes/Levels/2.tscn").instance(),
@@ -129,11 +129,11 @@ func change_level():
 	if old_level:
 		old_level.queue_free()
 		stop_game()
-	current_level = levels[level_id]
+	current_level = levels[next_level_id]
 	current_level.connect('rotated', $Player, 'on_level_rotated')
 	add_child(current_level, true)
 	$Player.position = screen_position_to_world(Vector2())
-	level_id += 1
+	next_level_id += 1
 	current_level.position = screen_position_to_world(Vector2(100, 640))
 	$Player.focus_camera(false)
 	$Player.tween_to(current_level.position + current_level.get_start_position())
@@ -141,7 +141,7 @@ func change_level():
 	
 
 func is_final_level():
-	return level_id == levels.size()
+	return next_level_id == levels.size()
 	
 	
 func screen_position_to_world(screen_position : Vector2) -> Vector2:
