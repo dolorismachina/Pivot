@@ -55,6 +55,7 @@ func start_game():
 	
 func stop_game():
 	in_play = false
+	player_ready = false
 	current_level.disable_collision()
 	current_level.stop()
 	$Player.stop()	
