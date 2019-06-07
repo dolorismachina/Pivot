@@ -3,7 +3,7 @@ class_name Pivot
 
 
 var current_level
-export (int) var next_level_id = 0
+export (int) var next_level_id = 6
 var levels = [
 	preload("res://Scenes/Levels/1.tscn").instance(),
 	preload("res://Scenes/Levels/2.tscn").instance(),
@@ -11,6 +11,7 @@ var levels = [
 	preload("res://Scenes/Levels/4.tscn").instance(),
 	preload("res://Scenes/Levels/5.tscn").instance(),
 	preload("res://Scenes/Levels/6.tscn").instance(),
+	preload("res://Scenes/Levels/7.tscn").instance(),
 ]
 
 
