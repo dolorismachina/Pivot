@@ -189,3 +189,6 @@ func _on_Player_reached_end():
 	$Overlay.show(score, duration)
 	$HUD.hide()
 	stop_game()
+
+func _on_LevelSelect_level_selected(id):
+	print("level selected: ", id)

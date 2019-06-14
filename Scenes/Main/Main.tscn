@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scenes/Main/Main.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Scenes/Background/Background.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Assets/Chad_Crouch_-_Coral.ogg" type="AudioStream" id=5]
 [ext_resource path="res://Scenes/HUD/Overlay.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/HUD/LevelSelect.tscn" type="PackedScene" id=7]
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 1 )
@@ -26,6 +27,8 @@ autoplay = true
 [node name="Overlay" parent="." instance=ExtResource( 6 )]
 layer = 10
 
+[node name="LevelSelect" parent="." instance=ExtResource( 7 )]
+
 [connection signal="collectable_collected" from="Player" to="." method="_on_Player_collectable_collected"]
 [connection signal="fell_off" from="Player" to="." method="_on_Player_fell_off"]
 [connection signal="is_waiting" from="Player" to="." method="_on_Player_is_waiting"]
@@ -33,3 +36,4 @@ layer = 10
 [connection signal="reached_end" from="Player" to="." method="_on_Player_reached_end"]
 [connection signal="reset" from="HUD" to="." method="_on_HUD_reset"]
 [connection signal="next_button_pressed" from="Overlay" to="." method="_on_Overlay_next_button_pressed"]
+[connection signal="level_selected" from="LevelSelect" to="." method="_on_LevelSelect_level_selected"]
