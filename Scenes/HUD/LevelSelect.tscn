@@ -14,6 +14,47 @@ scale = Vector2( 0.586552, 1.57349 )
 texture = ExtResource( 2 )
 centered = false
 
-[node name="LevelButton" parent="." instance=ExtResource( 3 )]
+[node name="GridContainer" type="GridContainer" parent="."]
+anchor_bottom = 1.0
+margin_left = 60.0
+margin_right = 660.0
+custom_constants/hseparation = 50
+columns = 3
+
+[node name="LevelButton" parent="GridContainer" instance=ExtResource( 3 )]
+margin_right = 163.0
+margin_bottom = 163.0
+level_id = 0
+
+[node name="LevelButton2" parent="GridContainer" instance=ExtResource( 3 )]
+margin_left = 213.0
+margin_right = 376.0
+margin_bottom = 163.0
+level_id = 1
+
+[node name="LevelButton3" parent="GridContainer" instance=ExtResource( 3 )]
+margin_left = 426.0
+margin_right = 589.0
+margin_bottom = 163.0
 level_id = 2
+
+[node name="LevelButton4" parent="GridContainer" instance=ExtResource( 3 )]
+margin_top = 167.0
+margin_right = 163.0
+margin_bottom = 330.0
+level_id = 3
+
+[node name="LevelButton5" parent="GridContainer" instance=ExtResource( 3 )]
+margin_left = 213.0
+margin_top = 167.0
+margin_right = 376.0
+margin_bottom = 330.0
+level_id = 4
+
+[node name="LevelButton6" parent="GridContainer" instance=ExtResource( 3 )]
+margin_left = 426.0
+margin_top = 167.0
+margin_right = 589.0
+margin_bottom = 330.0
+level_id = 5
 

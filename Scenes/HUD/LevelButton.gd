@@ -5,7 +5,7 @@ signal level_selected(id)
 export (int) var level_id
 
 func _ready():
-	pass
+	$Label.text = str(level_id)
 
 
 func _on_LevelButton_pressed():

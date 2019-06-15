@@ -1,12 +1,13 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scenes/Main/Main.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/HUD/HUD.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scenes/Background/Background.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Assets/Chad_Crouch_-_Coral.ogg" type="AudioStream" id=5]
-[ext_resource path="res://Scenes/HUD/Overlay.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Scenes/HUD/LevelSelect.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/TitleScreen/TitleScreen.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/HUD/LevelSelect.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Background/Background.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Assets/Chad_Crouch_-_Coral.ogg" type="AudioStream" id=7]
+[ext_resource path="res://Scenes/HUD/Overlay.tscn" type="PackedScene" id=8]
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 1 )
@@ -15,19 +16,22 @@ script = ExtResource( 1 )
 
 [node name="HUD" parent="." instance=ExtResource( 3 )]
 
-[node name="ParallaxBackground" parent="." instance=ExtResource( 4 )]
+[node name="TitleScreen" parent="HUD" instance=ExtResource( 4 )]
+
+[node name="LevelSelect" parent="HUD" instance=ExtResource( 5 )]
+visible = false
+
+[node name="ParallaxBackground" parent="." instance=ExtResource( 6 )]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 
 [node name="AudioBackgroundMusic" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 5 )
+stream = ExtResource( 7 )
 volume_db = -10.0
 autoplay = true
 
-[node name="Overlay" parent="." instance=ExtResource( 6 )]
+[node name="Overlay" parent="." instance=ExtResource( 8 )]
 layer = 10
-
-[node name="LevelSelect" parent="." instance=ExtResource( 7 )]
 
 [connection signal="collectable_collected" from="Player" to="." method="_on_Player_collectable_collected"]
 [connection signal="fell_off" from="Player" to="." method="_on_Player_fell_off"]
@@ -35,5 +39,5 @@ layer = 10
 [connection signal="obstacle_touched" from="Player" to="." method="_on_Player_obstacle_touched"]
 [connection signal="reached_end" from="Player" to="." method="_on_Player_reached_end"]
 [connection signal="reset" from="HUD" to="." method="_on_HUD_reset"]
+[connection signal="level_selected" from="HUD/LevelSelect" to="." method="_on_LevelSelect_level_selected"]
 [connection signal="next_button_pressed" from="Overlay" to="." method="_on_Overlay_next_button_pressed"]
-[connection signal="level_selected" from="LevelSelect" to="." method="_on_LevelSelect_level_selected"]

@@ -3,7 +3,7 @@ class_name Pivot
 
 
 var current_level
-export (int) var next_level_id = 6
+export (int) var next_level_id = 0
 var levels = [
 	preload("res://Scenes/Levels/1.tscn").instance(),
 	preload("res://Scenes/Levels/2.tscn").instance(),
@@ -23,8 +23,8 @@ var player_ready = false
 
 
 func _ready():
-	change_level()
-	
+	#change_level(0)
+	pass
 
 func _unhandled_input(event):
 	if in_play or not player_ready:
@@ -106,7 +106,7 @@ func initialize():
 	$Player.stop()
 	
 	
-func change_level():
+func change_level(id):
 	if is_final_level():
 		# TODO: Show final screen or something.
 		print('Max level')
@@ -117,7 +117,7 @@ func change_level():
 	if current_level:
 		swap_level_out()
 		
-	setup_next_level()
+	setup_next_level(id)
 	
 	prepare_player_for_new_level()
 	
@@ -131,8 +131,8 @@ func prepare_player_for_new_level():
 	$Player.connect('position_reached', current_level, 'on_player_reached_start')
 	
 	
-func setup_next_level():
-	current_level = levels[next_level_id]
+func setup_next_level(id):
+	current_level = levels[id]
 	current_level.connect('rotated', $Player, 'on_level_rotated')
 	current_level.position = screen_position_to_world(Vector2(100, 640))
 	add_child(current_level, true)
@@ -163,7 +163,7 @@ func _on_Player_collectable_collected(value):
 
 
 func _on_Overlay_next_button_pressed():
-	change_level()
+	change_level(next_level_id)
 	$Overlay.hide()
 	$HUD.show()
 
@@ -190,5 +190,10 @@ func _on_Player_reached_end():
 	$HUD.hide()
 	stop_game()
 
+
 func _on_LevelSelect_level_selected(id):
 	print("level selected: ", id)
+	change_level(id)
+	next_level_id = id + 1
+	$HUD/LevelSelect.visible = false
+	
