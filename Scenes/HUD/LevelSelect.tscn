@@ -58,3 +58,8 @@ margin_right = 589.0
 margin_bottom = 330.0
 level_id = 5
 
+[node name="LevelButton7" parent="GridContainer" instance=ExtResource( 3 )]
+margin_top = 334.0
+margin_right = 163.0
+margin_bottom = 497.0
+
