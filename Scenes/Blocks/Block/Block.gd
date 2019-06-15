@@ -72,7 +72,6 @@ func contact():
 	$TimerShake.start(0)
 	$AnimationPlayer.play("bounce")
 	$ColliderTimer.start()
-	$CollisionShape2D.disabled = true
 
 	spawn_particles()
 
@@ -89,18 +88,12 @@ func show():
 
 
 func enable():
-	$CollisionShape2D.disabled = false
 	is_enabled = true
 
 
 func disable():
-	disable_collision()
 	$Sprite.modulate.a = 0
 	is_enabled = false
-
-
-func disable_collision():
-	$CollisionShape2D.disabled = true
 
 
 func _on_ColliderTimer_timeout():

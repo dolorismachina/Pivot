@@ -104,8 +104,12 @@ func drop():
 
 
 func stop():
-	$CollisionShape2D.call_deferred("set_disabled", true)
-	$Area2D/CollisionShape2D.call_deferred("set_disabled", true)
+	set_collision_mask_bit(1, false)
+	$Area2D.set_collision_mask_bit(1, false)
+	
+	set_collision_mask_bit(2, false)
+	$Area2D.set_collision_mask_bit(2, false)
+	
 	gravity = Vector2(0, 0)
 	velocity = Vector2(0, 0)
 	
@@ -115,8 +119,12 @@ func reset():
 	
 	
 func enable():
-	$CollisionShape2D.disabled = false
-	$Area2D/CollisionShape2D.disabled = false
+	set_collision_mask_bit(1, true)
+	$Area2D.set_collision_mask_bit(1, true)
+	
+	set_collision_mask_bit(2, true)
+	
+	$Area2D.set_collision_mask_bit(2, true)
 	
 	change_state(State.ACTIVE)
 	
@@ -169,7 +177,8 @@ func tween_to(new_position : Vector2) -> void:
 		Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
 		
 	$Tween.start()
-	$CollisionShape2D.disabled = true
+	set_collision_mask_bit(1, false)
+	set_collision_mask_bit(2, false)
 
 
 func fly_away():

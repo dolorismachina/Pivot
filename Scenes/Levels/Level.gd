@@ -69,10 +69,3 @@ func get_start_position() -> Vector2:
 func on_player_reached_start() -> void:
 	print('kupa')
 	
-
-func disable_collision():
-	var blocks = $Pivot/Content/Blocks.get_children()
-	
-	for b in blocks:
-		b.disable_collision()
-		

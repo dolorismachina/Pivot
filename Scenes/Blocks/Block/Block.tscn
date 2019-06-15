@@ -43,6 +43,8 @@ tracks/1/keys = {
 
 [node name="Block" type="StaticBody2D"]
 input_pickable = true
+collision_layer = 2
+collision_mask = 0
 physics_material_override = SubResource( 1 )
 script = ExtResource( 1 )
 colors = PoolColorArray( 0.94902, 0.282353, 0.439216, 1, 0.94902, 0.776471, 0.376471, 1, 0.027451, 0.94902, 0.701961, 1, 0.0941176, 0.733333, 0.94902, 1 )

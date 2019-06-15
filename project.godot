@@ -105,6 +105,18 @@ space={
  ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="player"
+2d_physics/layer_2="blocks"
+2d_physics/layer_3="pickups"
+
+[network]
+
+limits/debugger_stdout/max_chars_per_second=100000
+limits/debugger_stdout/max_messages_per_frame=50
+limits/debugger_stdout/max_errors_per_frame=30
+
 [rendering]
 
 quality/driver/driver_name="GLES2"

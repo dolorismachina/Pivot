@@ -44,7 +44,7 @@ func is_final_level():
 
 func setup_next_level(id):
 	current_level = levels[id]
-	current_level.connect('rotated', $Player, 'on_level_rotated')
+	current_level.connect('rotated', game.get_node("Player"), 'on_level_rotated')
 	current_level.position = game.screen_position_to_world(Vector2(100, 640))
 	game.add_child(current_level, true)
 	

@@ -21,6 +21,7 @@ radius = 12.4919
 radius = 12.838
 
 [node name="Player" type="KinematicBody2D"]
+collision_mask = 6
 script = ExtResource( 1 )
 horizontal_damping = 0.975
 
@@ -58,6 +59,7 @@ script = ExtResource( 5 )
 
 [node name="Area2D" type="Area2D" parent="."]
 editor/display_folded = true
+collision_mask = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 visible = false

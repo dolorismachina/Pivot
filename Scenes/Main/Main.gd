@@ -9,10 +9,6 @@ var duration = 0 # Time taken to beat a level
 var player_ready = false
 
 
-func _ready():
-	#change_level(0)
-	pass
-
 func _unhandled_input(event):
 	if in_play or not player_ready:
 		return
@@ -44,7 +40,6 @@ func start_game():
 func stop_game():
 	in_play = false
 	player_ready = false
-	$LevelManager.current_level.disable_collision()
 	$LevelManager.current_level.stop()
 	$Player.stop()	
 
