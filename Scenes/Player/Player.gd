@@ -44,7 +44,9 @@ func move(delta) -> KinematicCollision2D:
 	
 	
 func collide(collision : KinematicCollision2D) -> void:
-	$RespawnTimer.start(0)
+	$RespawnTimer.start(0)	
+	$CollisionTimer.start(0)
+	set_collision_mask_bit(1, false)
 	
 	var block : Block = collision.collider as Block
 	
@@ -227,3 +229,7 @@ func on_level_rotated(direction, angle):
 
 func _on_RespawnTimer_timeout():
 	emit_signal("fell_off")
+
+
+func _on_CollisionTimer_timeout():
+	set_collision_mask_bit(1, true)
