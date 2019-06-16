@@ -140,6 +140,14 @@ func _on_Player_reached_end():
 	$Overlay.show(score, duration)
 	$HUD.hide()
 	stop_game()
+	
+	var save_data = {
+		"id": $LevelManager.next_level_id - 1,
+		"score": score,
+		"time": str(duration.minute) + str(duration.second),
+		"state": "complete"
+	}
+	$SaveSystem.save(save_data)
 
 
 func _on_LevelSelect_level_selected(id):

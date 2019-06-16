@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scenes/Main/Main.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Assets/Chad_Crouch_-_Coral.ogg" type="AudioStream" id=7]
 [ext_resource path="res://Scenes/HUD/Overlay.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Scenes/Main/LevelManager.gd" type="Script" id=9]
+[ext_resource path="res://Scenes/SaveSystem/SaveSystem.tscn" type="PackedScene" id=10]
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 1 )
@@ -36,6 +37,8 @@ layer = 10
 
 [node name="LevelManager" type="Node2D" parent="."]
 script = ExtResource( 9 )
+
+[node name="SaveSystem" parent="." instance=ExtResource( 10 )]
 
 [connection signal="collectable_collected" from="Player" to="." method="_on_Player_collectable_collected"]
 [connection signal="fell_off" from="Player" to="." method="_on_Player_fell_off"]
