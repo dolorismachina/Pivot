@@ -67,3 +67,8 @@ func create_default_data(id):
 		"state": "locked"
 	}
 	
+	
+# Return data for a given level ID.
+func get_data(id):
+	return _save_data[id]
+	
