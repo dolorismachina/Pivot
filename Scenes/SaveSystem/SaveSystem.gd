@@ -3,7 +3,7 @@ class_name SaveSystem
 
 
 onready var game = get_parent()
-var save_data = []
+var _save_data = []
 
 
 func _ready():
@@ -12,16 +12,16 @@ func _ready():
 		init_empty_save()
 	else:
 		load_from_file()
-		print(save_data)
+		print(_save_data)
 
 
 # Modify level data and save to file.
 func save(data):
 	print(data)
-	save_data[data.id] = data
-	if data.id < save_data.size() - 1:
+	_save_data[data.id] = data
+	if data.id < _save_data.size() - 1:
 		print("Sewq")
-		save_data[data.id + 1].state = "unlocked"
+		_save_data[data.id + 1].state = "unlocked"
 	save_to_file()
 	
 
@@ -33,9 +33,9 @@ func init_empty_save():
 	
 	for i in range(level_count):
 		var data = create_default_data(i)
-		save_data.push_back(data)
+		_save_data.push_back(data)
 	
-	save_data[0].state = "unlocked"
+	_save_data[0].state = "unlocked"
 	
 	save_to_file()
 	
@@ -44,7 +44,7 @@ func save_to_file():
 	var file = File.new()
 	file.open("res://save.txt", File.WRITE)
 	
-	var string = JSON.print(save_data, "  ")
+	var string = JSON.print(_save_data, "  ")
 	file.store_string(string)
 	
 	file.close()
@@ -54,7 +54,7 @@ func load_from_file():
 	var file = File.new()
 	file.open("res://save.txt", File.READ)
 	var data = file.get_as_text()
-	save_data = JSON.parse(data).result
+	_save_data = JSON.parse(data).result
 	
 	file.close()
 	
