@@ -63,6 +63,11 @@ _global_script_classes=[ {
 "class": "SpinningBlock",
 "language": "GDScript",
 "path": "res://Scenes/Blocks/SpinningBlock/SpinningBlock.gd"
+}, {
+"base": "Node2D",
+"class": "Stopwatch",
+"language": "GDScript",
+"path": "res://Scenes/Stopwatch/Stopwatch.gd"
 } ]
 _global_script_class_icons={
 "Block": "",
@@ -75,7 +80,8 @@ _global_script_class_icons={
 "Pivot": "",
 "Player": "",
 "SaveSystem": "",
-"SpinningBlock": ""
+"SpinningBlock": "",
+"Stopwatch": ""
 }
 
 [application]

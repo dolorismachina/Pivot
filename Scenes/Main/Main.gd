@@ -25,7 +25,7 @@ func _process(delta):
 		return
 		
 	move_level()
-	check_time()
+	$HUD.update_time($Stopwatch.to_string())
 	
 
 func start_game():
@@ -33,8 +33,7 @@ func start_game():
 	in_play = true
 	$LevelManager.current_level.start()
 	
-	# Start measuring time
-	start_time = OS.get_unix_time()
+	$Stopwatch.start()
 	
 	
 func stop_game():
@@ -42,16 +41,12 @@ func stop_game():
 	player_ready = false
 	$LevelManager.current_level.stop()
 	$Player.stop()	
+	$Stopwatch.stop()
+	$Stopwatch.reset()
 
 
 func move_level():
 	$LevelManager.current_level.follow_player($Player)
-	
-
-func check_time():
-	var end_time = OS.get_unix_time()
-	duration = OS.get_datetime_from_unix_time(end_time - start_time)
-	$HUD.update_time(duration)
 	
 	
 func restart():
@@ -59,7 +54,6 @@ func restart():
 	player_ready = true
 	reset_score()
 	reset_player()
-	reset_time()
 	$LevelManager.current_level.reset()
 	
 	
@@ -76,14 +70,9 @@ func reset_score():
 	$HUD.update_score(score)
 
 
-func reset_time():
-	start_time = OS.get_unix_time()
-	check_time()
-	$HUD.update_time(duration)
-	
-
 func initialize():
-	reset_time()
+	$Stopwatch.reset()
+	$HUD.update_time($Stopwatch.to_string())
 	reset_score()
 	player_ready = false
 	$Player.stop()
@@ -136,18 +125,16 @@ func _on_HUD_reset():
 
 
 func _on_Player_reached_end():
-	#change_level()
-	$Overlay.show(score, duration)
-	$HUD.hide()
-	stop_game()
-	
 	var save_data = {
 		"id": $LevelManager.next_level_id - 1,
 		"score": score,
-		"time": str(duration.minute) + str(duration.second),
+		"time": int($Stopwatch.seconds_elapsed),
 		"state": "complete"
 	}
 	$SaveSystem.save(save_data)
+	$Overlay.show(score, $Stopwatch.to_string()) 
+	$HUD.hide()
+	stop_game()
 
 
 func _on_LevelSelect_level_selected(id):

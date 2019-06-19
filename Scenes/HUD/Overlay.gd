@@ -17,14 +17,9 @@ func show(score, time):
 	$Control/TextureButton.modulate = Color(1, 1, 1, 0)
 	
 	$Control.modulate = Color(1, 1, 1, 1)
-	var s = ''
-	if time.second < 10:
-		s = '0' + str(time.second)
-	else:
-		s = str(time.second)
 		
 	$Control/ScoreValue.text = str(score)
-	$Control/TimeValue.text = str(time.minute, ':', s)
+	$Control/TimeValue.text = time
 	
 	scale = Vector2(1, 1)
 	
