@@ -63,7 +63,7 @@ func create_default_data(id):
 	return {
 		"id": id,
 		"score": 0,
-		"time": "0:00",
+		"time": 0,
 		"state": "locked"
 	}
 	
