@@ -2,7 +2,9 @@ extends Node2D
 class_name Stopwatch
 
 
-var seconds_elapsed = 0.0
+var milliseconds = 0 setget , get_milliseconds
+var seconds = 0 setget , get_seconds
+var minutes = 0 setget , get_minutes 
 
 
 func _ready():
@@ -10,7 +12,9 @@ func _ready():
 	
 
 func _process(delta):
-	seconds_elapsed += delta
+	milliseconds += floor(delta * 1000)
+	seconds = milliseconds / 1000
+	minutes = seconds / 60
 	
 
 func start():
@@ -31,18 +35,34 @@ func resume():
 	
 
 func reset():
-	seconds_elapsed = 0.0
+	milliseconds = 0
+	seconds = 0
+	minutes = 0
+
+
+func get_milliseconds():
+	return  milliseconds
+	
+
+func get_seconds():
+	return milliseconds / 1000
+	
+	
+func get_minutes():
+	return milliseconds / 1000 / 60.0
 	
 	
 func to_string(padded = true):
-	var m = floor(seconds_elapsed / 60)
-	var s = int(seconds_elapsed) % 60
+	var m = floor(seconds / 60)
+	var s = int(seconds) % 60
 	
 	var time_string = ""
 	time_string += str(m) + ":"
 	if s < 10:
 		time_string += "0"
 	time_string += str(s)
+
+	print("String: ", time_string)
 	
 	return time_string
 	
