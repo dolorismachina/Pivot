@@ -38,9 +38,11 @@ func stop_game():
 	in_play = false
 	player_ready = false
 	$LevelManager.current_level.stop()
-	$Player.stop()	
+	$Player.stop()
+		
 	$Stopwatch.stop()
 	$Stopwatch.reset()
+	$HUD.update_time($Stopwatch.to_string())
 
 
 func move_level():
@@ -123,18 +125,24 @@ func _on_HUD_reset():
 
 
 func _on_Player_reached_end():
-	var save_data = {
-		"id": $LevelManager.next_level_id - 1,
-		"score": score,
-		"time": int($Stopwatch.seconds_elapsed),
-		"state": "complete"
-	}
-	$SaveSystem.save(save_data)
+	save_progress()
+	
 	$Overlay.show(score, $Stopwatch.to_string()) 
 	$HUD.hide()
 	stop_game()
 
 
+func save_progress():
+	var save_data = {
+		"id": $LevelManager.next_level_id - 1,
+		"score": score,
+		"time": int($Stopwatch.get_seconds()),
+		"state": "complete"
+	}
+
+	$SaveSystem.save(save_data)
+	
+	
 func _on_LevelSelect_level_selected(id):
 	print("level selected: ", id)
 	$LevelManager.change_level(id)
