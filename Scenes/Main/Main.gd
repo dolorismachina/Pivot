@@ -4,8 +4,6 @@ class_name Pivot
 
 var score = 0
 var in_play = false
-var start_time = 0
-var duration = 0 # Time taken to beat a level
 var player_ready = false
 
 
