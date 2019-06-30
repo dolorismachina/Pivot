@@ -64,4 +64,4 @@ func contact() -> void:
 		#self.
 		fall()
 	else:
-		$Sprite.modulate.a = 0.5
+		$Sprite.modulate.a = 0.25

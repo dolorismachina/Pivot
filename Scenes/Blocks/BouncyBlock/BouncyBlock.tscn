@@ -9,8 +9,6 @@ script = ExtResource( 2 )
 bounce_limit = 800
 
 [node name="Sprite" parent="." index="0"]
+modulate = Color( 0.733333, 0.886275, 0.223529, 1 )
 texture = ExtResource( 3 )
-
-[node name="CollisionShape2D" parent="." index="1"]
-visible = false
 

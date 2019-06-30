@@ -26,7 +26,8 @@ func get_next():
 
 
 func _ready():
-	set_random_color()
+	#set_random_color()
+	block_color = $Sprite.modulate
 
 	if not is_visible:
 		$Sprite.modulate.a = 0
