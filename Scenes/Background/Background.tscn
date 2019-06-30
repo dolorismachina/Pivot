@@ -3,7 +3,7 @@
 [ext_resource path="res://Scenes/Background/Background.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Background/Floater.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/Untitled.png" type="Texture" id=3]
-[ext_resource path="res://Scenes/Background/bg.png" type="Texture" id=4]
+[ext_resource path="res://Assets/BackgroundPlain.png" type="Texture" id=4]
 
 [node name="ParallaxBackground" type="ParallaxBackground"]
 script = ExtResource( 1 )
@@ -58,7 +58,7 @@ position = Vector2( 469.328, 598.88 )
 texture = ExtResource( 3 )
 
 [node name="Background" type="Sprite" parent="ParallaxLayer"]
-modulate = Color( 0.419608, 0.721569, 1, 0.603922 )
+modulate = Color( 0.117647, 0.105882, 0.0941176, 1 )
 position = Vector2( 0, -1.58667 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 4 )
